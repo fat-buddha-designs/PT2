@@ -29,7 +29,7 @@ pageType: products
     <div class="product--details">
       <p class="is--price">{% svg "gbp" %}{{ product.price }}</p>
     </div>
-    {{ product.content | safe }}
+    {{ product.content | toHTML | safe }}
     {% include "partials/postage.njk" %}
   </div>
 

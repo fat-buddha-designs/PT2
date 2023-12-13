@@ -16,7 +16,6 @@ const markdownItAnchor = require('markdown-it-anchor');
 const markdownItLinkAttributes = require('markdown-it-link-attributes');
 const markdownitAbbr = require('markdown-it-abbr');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
-const EleventyFetch = require("@11ty/eleventy-fetch");
 const Image = require('@11ty/eleventy-img');
 const img2picture = require("eleventy-plugin-img2picture");
 const generateSocialImages = require("@fat-buddha-designs/eleventy-social-images");
@@ -62,40 +61,18 @@ async function imageShortcode(src, alt, sizes = "100vw") {
         </picture>`;
 }
 
-// 	--------------- Image Manipulation -----------------
-async function imageBuffer(src, alt, sizes = "100vw") {
-  if (alt === undefined) {
-    throw new Error(`Missing \`alt\` on responsiveimage from: ${src}`);
-  }
+// 	-----------Remote Image Manipulation -----------------
+async function remoteImages() {
 
-  let url = "https://www.zachleat.com/img/avatar-2017-big.png";
-  let imageBuffer = await EleventyFetch(url, {
-    duration: "1d",
-    type: "buffer"
-  });
+    let imageBuffer = await EleventyFetch(url, {
+      duration: "1w",
+      type: "buffer",
+      directory: ".cache",
+      removeUrlQueryParams: false,
+    });
+		formats: ["webp", "jpeg"],
 
-  let metadata = await Image(src, {
-    widths: [300, 600],
-    formats: ['webp', 'jpeg'],
-    urlPath: "/assets/images/",
-    outputDir: "./_site/assets/images/"
-  });
-
-  let lowsrc = metadata.jpeg[0];
-  let highsrc = metadata.jpeg[metadata.jpeg.length - 1];
-
-  return `<picture>
-        ${Object.values(metadata).map(imageFormat => {
-          return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
-        }).join("\n")}
-          <img
-            src="${lowsrc.url}"
-            width="${highsrc.width}"
-            height="${highsrc.height}"
-            alt="${alt}"
-            loading="lazy"
-            decoding="async">
-        </picture>`;
+    console.log( imageBuffer );
 }
 
 // 	------ Get all unique key values from a collection -----------
@@ -170,8 +147,6 @@ module.exports = function (config) {
   config.addFilter("toHTML", str => {
     return new markdownIt(markdown_options).renderInline(str);
   });
-
-  // 	--------------------- Plugins ---------------------
   config.addPlugin(pluginRss);
   config.addPlugin(wordStats);
   config.addPlugin(svgSprite, {

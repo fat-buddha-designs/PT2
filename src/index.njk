@@ -33,8 +33,8 @@ keywords: ['Garden Sculptures', 'Plant Theatres', 'Steel Garden Sculptures', 'Ru
         <a aria-label="follow to find out more details about a {{product.Title}}" href="/products/{{ product.Title | slugify }}">
           <img src="{{ product.image[0].url }}" alt="{{ product.imageAlt }}"></a>
           <p class="is--heading">{{ product.Title }}</p>
-          <p>{{ product.description | truncate(80) }}</p>
+          {{ product.description | toHTML | safe | truncate(80) }}
       </div>{%- endfor -%}
     </div>
   </div>
-</section> 
+</section>

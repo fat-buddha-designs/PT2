@@ -4,7 +4,7 @@
     <a aria-label="view our {{ product.Title }}" href="{{ product.Title | slugify }}">
       <img src="{{ product.image[0].url }}" alt="{{ product.imageAlt }}"></a>
     <p class="is--heading">{{ product.Title }}</p>
-    <p>{{ product.description | truncate(80) }}</p>
+    {{ product.description | toHTML | safe | truncate(80) }}
     <p class="is--price">{% svg "gbp" %}{{ product.price }}</p>
   </div>{%- endfor -%}
 </div>

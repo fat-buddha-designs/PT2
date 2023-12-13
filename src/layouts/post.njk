@@ -6,7 +6,7 @@ pageType: blog
 <article class="post--block">
   <a class="button" aria-label="Back to all our news articles" href="/news/">To All Articles</a>
   <h1>{{ article.Title }}</h1>
-  <img src="{{ article.Image[0].url }}" alt="{{ article.imageAlt }}">
+  <img src="{{ article.Image[0].url }}" alt="{{ article.ImageAlt }}">
   <p class="is--meta">Author: {{ meta.authorName }} ~ Published: {% if article.PublishedDate %}<time datetime="{{ article.PublishedDate | dateToFormat }}">{{ article.PublishedDate | longDate }}</time></p>{% endif %}
   <p class="is--meta">Reading Time: (approx) {{ article.Content | wordStats }}</p>
   <p class="visually--hidden" id="tags-desc">Tags that this post has been filed under.</p>
@@ -14,12 +14,5 @@ pageType: blog
     <li class="is--meta">Category:</li>
     <li><a aria-label="to the {{ article.Category }} category page" class="is--meta" href="/categories/{{ article.Category }}/">{{ article.Category }}</a></li>
   </ul>
-  {{ article.Content | safe }}
+  {{ article.Content | toHTML | safe }}
 </article>
-
-<section class="n--wrapper prev--next">
-  {% set previousArticle = articles | getPreviousCollectionItem(page) %}
-  {% set nextArticle = articles | getNextCollectionItem(page) %}
-  <p>{% if previousArticle %}Previous Article: <a href="{{ previousArticle.url }}">{{ previousArticle.title }}</a>{% endif %}</p>
-  <p>{% if nextArticle %}Next Article: <a href="{{ nextArticle.url }}">{{ nextArticle.title }}</a>{% endif %}</p>
-</section>
