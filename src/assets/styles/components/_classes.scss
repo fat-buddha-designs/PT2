@@ -1,0 +1,116 @@
+hr {
+  border: 0;
+  border-bottom: var(--bor-width) solid var(--color-g-5);
+  margin: 1em 20%;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+.block {
+  background-color: transparent;
+  border: var(--bor);
+  border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+  box-shadow: var(--shadow-sm);
+  color: var(--f-color);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  text-align: left;
+
+  img {
+    margin-bottom: 0;
+  }
+
+  p:nth-last-of-type(1) {
+    margin-bottom: auto;
+    padding-bottom: 1rem;
+  }
+
+  button {
+    margin-top: auto;
+  }
+
+  svg.icon {
+    color: var(--sec-color);
+    fill: var(--sec-color);
+    height: 1.25em;
+    width: 1.25em;
+  }
+
+  a {
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--pri-color);
+    display: inline;
+    text-decoration: none;
+    transition: var(--dur) var(--trans);
+    transition-property: color, box-shadow;
+
+    &:hover,
+    &:focus {
+      box-shadow: none;
+      color: var(--f-color);
+    }
+  }
+  .is--price {
+    background-color: var(--tri-color-lgt);
+    border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+    font-family: var(--h-font);
+    font-size: var(--heading-h5);
+    font-weight: var(--h-font-wght);
+    letter-spacing: var(--l-spacing);
+    line-height: var(--line-height-header);
+    margin-bottom: 1rem;
+    margin-top: auto;
+    padding: var(--p-btn-input-v);
+    text-transform: capitalize;
+    width: 100%;
+    word-spacing: var(--w-spacing);
+  }
+}
+
+.is--hidden {
+  display: none;
+}
+
+.primary--color {
+  color: currentColor;
+}
+
+.s--wrapper {
+  margin: 0 auto;
+  max-width: var(--s-width, 50vw);
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.n--wrapper {
+  margin: 0 auto;
+  max-width: var(--n-width, 60vw);
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.w--wrapper {
+  margin: 0 auto;
+  max-width: var(--w-width, 70vw);
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.t--centered {
+  text-align: center;
+}
+
+.full--width {
+  margin-bottom: 2rem;
+  margin-left: 50%;
+  margin-top: .5rem;
+  padding: 5vh 2rem;
+  transform: translateX(-50%);
+  width: 100vw;
+}

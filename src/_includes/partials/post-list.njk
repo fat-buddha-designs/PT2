@@ -1,0 +1,15 @@
+{% if articles.length %}
+<h2 class="visually--hidden">A list of the articles we have produced relating to our products.</h2>
+<div class="post--list">
+  {% for article in articles %}
+  <div class="block | flow">
+    <img src="{{ article.Image[0].url }}" alt="{{ article.ImageAlt }}">
+    <div>
+      <p class="is--heading"><a aria-label="follow to find out more details about {{ article.Title }}" href="{{ article.Title | slugify }}" rel="bookmark">{{ article.Title }}</a></p>
+      <p class="is--meta">First published on <time datetime="{{ article.PublishedDate | utc }}">{{ article.PublishedDate | longDate }}</time> by {{ meta.authorName }}</p>
+      <p>{{ article.Content | safe | truncate(150) }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

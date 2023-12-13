@@ -1,0 +1,55 @@
+---
+layout: base
+pagination:
+  data: collections.categories
+  size: 1
+  alias: category
+addAllPagesToCollections: true
+permalink: '/categories/{{ category.slug }}/index.html'
+eleventyComputed:
+  title: 'Category: {{ category.slug }}'
+  description: 'A collection of news articles sorted by the {{ category.slug }} category, this makes it easier to find the article you want to read.'
+ogType: website
+jsonldType: page
+pageType: blog
+keywords:
+  - Categories
+  - Category
+  - Blog
+  - Posts
+  - Articles
+---
+
+{% block content %}
+<section class="content--block n--wrapper" data-pagefind-ignore >
+  <h1>{{ title }}</h1>
+<p class="is--bold">Categories:-</p>
+<ul class="tags--list">
+  {% for category in collections.categories %}
+  <li><a aria-label="to the {{ category.title }} category page" href="/categories/{{ category.slug }}/">{{ category.title }}</a></li>
+  {% endfor %}
+  </ul>
+
+  <h2 class="visually--hidden">Our list of articles related to {{ category.title }}</h2>
+  {% set posts = collections.releasedPosts | include("data.categories", category.title) %}
+  <ul class="post--list">
+  {% for item in posts %}
+  <li class="block | flow">
+    <img src="{{ item.data.image }}" alt="{{ item.data.alt }}">
+    <div>
+    <p class="is--heading">
+      <a aria-label="to the {{ item.data.title }} article" href="{{ item.url }}" rel="bookmark">{{ item.data.title }}</a>
+    </p>
+    <div>
+    <p class="is--meta">Author: {{ meta.authorName }}</p>
+    <p class="is--meta">Published: <time datetime="{{ item.date | dateToFormat }}">{{ item.date | dateToFormat }}</time></p>
+    <p class="visually--hidden" id="tags-desc">Tags that this post has been filed under.</p>
+    </div>
+    <p>{{ item.data.description }}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+</section>
+
+{% endblock %}

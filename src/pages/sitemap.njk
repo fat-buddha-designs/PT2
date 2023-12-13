@@ -1,0 +1,37 @@
+---
+layout: base
+permalink: '/sitemap/'
+title: Our Sitemap
+description: "Using our sitemap you can find your way around our website when the page you are looking for can't be found because you have found a non existent URL."
+keywords: ['Sitemap', 'Links', 'Pages']
+pageType: sitemap
+---
+
+<article class="s--wrapper" data-pagefind-ignore >
+    <h1>{{ title }}</h1>
+    <h2 class="visually--hidden">Links to our Primary Pages</h2>
+      <p class="visually--hidden">We provide a sitemap so that you can find any page on our website by clicking on the relevant link, you may need this if your have been sent or mistyped a page url, good luck.</p>
+      {% if navigation.firstnav %}<ul role="list">
+        <li aria-label="Our primary website pages" class="is--bold">Primary Pages</li>
+        {% for item in navigation.firstnav %}{% set externalAttribute = '' %}{% set currentAttribute = '' %}{% if item.external %}{% set externalAttribute = ' rel="external"' %}{% endif %}{% if page.url == item.url %}{% set currentAttribute = ' aria-current="page"' %}{% endif %}<li><a aria-label="to the {{ item.aria }} page" href="{{ item.url | lowercase }}" {{ externalAttribute | safe }} {{ currentAttribute | safe }}>{{ item.text }}</a></li>{% endfor %}
+      </ul >{% endif %}
+  {% if navigation.secondnav %}
+    <h3 class="visually--hidden">Links to our Secondary Pages</h3>
+      <ul role="list">
+        <li class="is--bold" aria-label="Our secondary website pages">Secondary Pages</li>
+        {% for item in navigation.secondnav %}{% set externalAttribute = '' %}{% set currentAttribute = '' %}{% if item.external %}{% set externalAttribute = ' rel="external"' %}{% endif %}{% if page.url == item.url %}{% set currentAttribute = ' aria-current="page"' %}{% endif %}<li><a aria-label="to the {{ item.aria }} page" href="{{ item.url | lowercase }}" {{ externalAttribute | safe }} {{ currentAttribute | safe }}>{{ item.text }}</a></li>{% endfor %}
+        <li><a aria-label="Our successful form submission page" href="/success/">Success</a></li>
+      </ul>{% endif %}
+  {% set releasedPosts = collections.releasedPosts %}
+  <h3 class="visually--hidden">Links to our Articles</h3>
+  <ul role="list">
+    <li class="is--bold" aria-label="Our Articles">Articles</li>
+    {% for item in releasedPosts %}<li><a aria-label="to the {{ item.data.title }} article" href="{{ item.url | lowercase }}">{{ item.data.title }}</a></li>{% endfor %}
+  </ul>
+  {% set products = collections.products %}
+  <h3 class="visually--hidden">Links to our Products</h3>
+  <ul role="list">
+    <li class="is--bold" aria-label="Our Articles">Products</li>
+    {% for item in products %}<li><a aria-label="to the {{ item.data.title }} article" href="{{ item.url | lowercase }}">{{ item.data.title }}</a></li>{% endfor %}
+  </ul>
+</article>

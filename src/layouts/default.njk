@@ -1,0 +1,14 @@
+---
+layout: base
+---
+
+{% block content %}
+
+<main id="main" data-pagefind-body>
+  <section class="content--block n--wrapper">
+    <h1>{{ title }}</h1>
+  {{ content | safe }}
+  </section>
+</main>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% set currentUrl = page.url %}
+{% if navigation.firstnav %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" aria-label="to the homepage" href="/">
+      {% svg "logo" %}
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbar" class="navbar-menu">
+    <div class="navbar-start">
+      {% for item in navigation.firstnav %}{% set externalAttribute = '' %}{% set currentAttribute = '' %}{% if item.external %}{% set externalAttribute = ' rel="external"' %}{% endif %}{% if page.url == item.url %}{% set currentAttribute = ' aria-current="page"' %}{% endif %}
+      <a class="navbar-item" aria-label="{{ item.aria }}" href="{{ item.url }}"{{ externalAttribute | safe }}{{ currentAttribute | safe }}>{{ item.text }}</a>{% endfor %}
+    </div>
+  </div>
+</nav>
+{% endif %}

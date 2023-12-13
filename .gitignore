@@ -1,0 +1,34 @@
+# Misc
+*.log
+npm-debug.*
+*.scssc
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+.sass-cache
+.cspell
+cspell.json
+.prettierrc
+.vscode
+
+# build output
+_site
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# environment variables
+.env
+.env.local
+.env.production
+
+# Netlify generated stuff
+.netlify/
+netlify.toml
+node_modules

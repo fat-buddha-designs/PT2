@@ -1,0 +1,74 @@
+audio,
+iframe,
+img,
+object,
+video {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.video-container {
+  height: 0;
+  padding-bottom: 56%;
+  position: relative;
+  width: 100%;
+
+  iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+  font-family: var(--b-font);
+  font-size: inherit;
+  height: auto;
+  line-height: inherit;
+  margin-bottom: 1rem;
+  position: relative;
+  shape-margin: .75rem;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+
+  &.image--left {
+    float: left;
+    margin-bottom: .5em;
+    margin-right: 1em;
+    width: 250px;
+  }
+
+  &.image--right {
+    float: right;
+    margin-bottom: .5em;
+    margin-left: 1em;
+    width: 250px;
+  }
+}
+
+img::before {
+  content: "We're sorry, the image below is broken";
+  display: block;
+  margin-bottom: 10px;
+}
+
+img::after {
+  content: "(url: "attr(src) ")";
+  display: block;
+  font-size: .75em;
+  margin-top: 6px;
+}
+
+.lazy-img {
+  filter: blur(8px);
+  transition: filter .3s ease-in;
+}
+.lazy-picture[data-loaded] .lazy-img {
+  filter: unset;
+}

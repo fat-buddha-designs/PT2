@@ -1,0 +1,84 @@
+label {
+  display: block;
+  font-size: var(--small);
+  margin-bottom: .3em;
+  opacity: .9;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=password],
+input[type=number],
+input[type=search],
+input[type=textarea],
+select,
+textarea {
+  appearance: none;
+  background-color: var(--color-p);
+  border: var(--bor);
+  border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+  box-shadow: var(--shadow-sm);
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--paragraph);
+  height: auto;
+  margin-bottom: 1rem;
+  margin-left: 0;
+  outline: none;
+  padding: var(--p-btn-input-v) var(--p-btn-input-h);
+  width: 100%;
+
+  &:focus {
+    outline: 3px solid var(--sec-color-lgt);
+  }
+
+  &.full--width {
+    width: 100%;
+  }
+}
+
+
+input[type=submit] {
+  appearance: none;
+  background-color: var(--pri-color);
+  border: 0;
+  border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+  box-shadow: var(--shadow-sm);
+  color: var(--f-color-inv);
+  font-family: inherit;
+  font-size: var(--paragraph);
+  height: auto;
+  margin-bottom: 1rem;
+  margin-left: 0;
+  outline: none;
+  padding: var(--p-btn-input-v) var(--p-btn-input-h);
+  width: 300px;
+
+  &:focus {
+    font-style: italic;
+    outline: 3px solid var(--sec-color-lgt);
+  }
+
+  &.full--width {
+    width: 100%;
+  }
+}
+
+textarea {
+  height: 12rem;
+  overflow: hidden;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:active,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover {
+  -webkit-text-fill-color: var(--f-color);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+form {
+  margin-bottom: 0;
+  padding: 0;
+}

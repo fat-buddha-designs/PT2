@@ -1,0 +1,8 @@
+:root {
+  --bor: var(--bor-width) solid var(--tri-color);
+  --bor-wh: var(--bor-width) solid var(--wh-color);
+  --bor-lg: var(--bor-width) solid var(--g-color-2);
+  --bor-m: var(--bor-width) solid var(--g-color-5);
+  --bor-dg: var(--bor-width) solid var(--g-color-8);
+  --bor-dot: var(--bor-width) dotted var(--g-color-3);
+}

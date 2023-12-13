@@ -1,0 +1,13 @@
+---
+layout: post
+eleventyComputed:
+  title: Our News Articles
+  description: "These are our really interesting news articles. We post about subjects related to our lovely products."
+keywords: ['Articles', 'Journal', 'Posts']
+pagination:
+  data: articles
+  size: 1
+  alias: article
+permalink: "news/{{ article.Title | slugify }}/"
+---
+

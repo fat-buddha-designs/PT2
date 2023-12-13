@@ -1,0 +1,35 @@
+---
+layout: base
+pageType: products
+---
+
+{% block content %}
+<section class="w--wrapper">
+  <h1>{{ title }}</h1>
+
+  <input type="radio" name="category" id="all" class="input" />
+  <input type="radio" name="category" id="bee" class="input" />
+  <input type="radio" name="category" id="bird" class="input" />
+  <input type="radio" name="category" id="feeder" class="input" />
+  <input type="radio" name="category" id="insect" class="input" />
+  <input type="radio" name="category" id="planter" class="input" />
+  <input type="radio" name="category" id="stand" class="input" />
+  <input type="radio" name="category" id="steel" class="input" />
+  <input type="radio" name="category" id="theatre" class="input" />
+
+  <ul class="filters">
+    <li>Filter By Type...</li>
+    <li><label for="all">All</label></li>
+    <li><label for="bee">Bee Related</label></li>
+    <li><label for="bird">Bird Boxes</label></li>
+    <li><label for="feeder">Bird Feeders</label></li>
+    <li><label for="insect">Insect Hotels</label></li>
+    <li><label for="planter">Planters</label></li>
+    <li><label for="theatre">Plant Theatres</label></li>
+    <li><label for="stand">Display Stands</label></li>
+    <li><label for="steel">Steel</label></li>
+  </ul>
+
+   {% include "partials/product-list.njk" %}
+</section>
+{% endblock %}

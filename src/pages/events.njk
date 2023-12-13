@@ -1,0 +1,29 @@
+---
+layout: base
+permalink: /events/
+title: Upcoming Events
+description: "We display and sell our range of quality wood products at various events throughout the year, these events are where you can meet us."
+keywords: ['Upcoming Events', 'Sell Garden Art', 'Garden Shows', 'Norfolk And Suffolk', 'Shows And Events']
+---
+
+
+<section class="w--wrapper">
+  <h1>{{ title }}</h1>
+  <div class="events">
+    <h2 class="visually--hidden">Some events that we will be attending to show and sell our products.</h2>
+    <p>We sell our products at various shows and events throughout Norfolk & Suffolk. Below is a list of events we will be attending.</p>
+    <p>It's great way to try before you buy, as we always try to have a great selection of our product range with us.</p>
+    {% if events.length %}
+    {% for event in events -%}
+    <div class="block | flow">
+      <div class="event--content">
+        <p class="is--heading">{{ event.Title }}</p>
+        <p>{% svg "calendar-days" %} {{ event.StartDate | longDate }}{%- if event.FinishDate -%}-{{ event.FinishDate | longDate }}{%- endif -%}</p>
+        <p>{% svg "map-location-dot" %} {{ event.Location }}</p>
+        <p>{{ event.Content | safe }}</p>
+      </div>
+    </div>
+    {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>

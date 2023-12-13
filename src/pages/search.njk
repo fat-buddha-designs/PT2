@@ -1,0 +1,26 @@
+---
+layout: base
+permalink: '/search/'
+title: Search Plant Theatres & More
+description: "You can now search the content of articles, products and pages on our website, enjoy."
+keywords: ['Search', 'Search Our Website']
+pageType: search
+---
+
+<section data-pagefind-ignore >
+  <h1>{{ title }}</h1>
+  <script src="/pagefind/pagefind-ui.js" type="text/javascript"></script>
+  <div id="search" class="search"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+          element: "#search",
+          showImages: false,
+          translations: {
+          placeholder: "Search this website",
+          zero_results: "We couldn't find any search results for '[SEARCH_TERM]'"
+        }
+      });
+    });
+</script>
+</section>

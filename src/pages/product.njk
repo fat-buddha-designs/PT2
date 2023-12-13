@@ -1,0 +1,13 @@
+---
+layout: product
+eleventyComputed:
+  title: Our Product
+  description: "This is the full range of our quality wooden outdoor products that we manufacture from pressure treated wood and stainless steel hardware."
+keywords: ['Quality Wooden Products', 'Wooden Products', 'Outdoor Wooden Products', 'Plant Theatres', 'Wall Planters', 'Bird Boxes', 'Nesting Boxes', 'Steel Sculptures', 'Steel Garden Sculptures']
+pageType: products
+pagination:
+  data: products
+  size: 1
+  alias: product
+permalink: "products/{{ product.Title | slugify }}/"
+---

@@ -1,0 +1,47 @@
+---
+layout: base
+permalink: '/contact-us/'
+title: Contact Us
+description: "Contact Plant Theatres And More today, by email, phone, or by the contact form on our website. We will get back to as soon as possible."
+keywords: ['Contact Us', 'Email', 'Mobile', 'Phone']
+pageType: contact
+---
+
+<section class="contact n--wrapper" data-pagefind-ignore >
+  <h1>{{ title }}</h1>
+  <div class="contact--container">
+    <div class="contact--left">
+      <h2 class="visually--hidden">Our Contact Details</h2>
+      {% include "partials/address.njk" %}
+      {% include "partials/phone.njk" %}
+    </div>
+    <div class="contact--right">
+      <h3 class="visually--hidden">Our Contact Form, useful if you would like ask us a question about any of our products.</h3>
+      <form name="contact-form" method="POST" action="/success/" data-netlify="true" data-netlify-honeypot="bot-field">
+            <label class="visually--hidden"> Don’t fill this out: <input name="bot-field" /></label>
+            <input class="visually--hidden" type="hidden" name="contact-form" value="contact" />
+        <div class="form--row">
+          <div>
+            <label for="name">Your name</label>
+            <input type="text" name="name" id="name" required v-model="formData.name" />
+          </div>
+          <div>
+            <label for="mobile">Your Mobile</label>
+            <input type="text" name="mobile" id="mobile" v-model="formData.mobile" />
+          </div>
+          <div>
+            <label for="email">Your Email</label>
+            <input type="email" name="email" id="email" required v-model="formData.email" />
+          </div>
+        </div>
+
+        <div class="textarea--row">
+          <label for="message">Message</label>
+          <textarea name="message" id="message" rows="8" required v-model="formData.message"></textarea>
+        </div>
+
+        <button name="submit" class="button--submit" type="submit">Submit Form</button>
+      </form>
+    </div>
+  </div>
+</section>

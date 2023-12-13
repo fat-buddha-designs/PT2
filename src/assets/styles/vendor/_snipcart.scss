@@ -1,0 +1,79 @@
+:root {
+  --bgColor-buttonPrimary: var(--pri-color-lgt);
+  --bgColor-buttonPrimary-hover: var(--pri-color);
+  --color-buttonPrimary: var(--f-color-inv);
+}
+
+.snipcart-modal {
+  border-left: 1px dotted var(--g-color-4);
+  z-index: 999;
+}
+
+button.snipcart-cart-header__close-button,
+button.snipcart-modal__close {
+  background: var(--tri-color);
+  border: 0;
+  padding: .4rem;
+  text-shadow: none;
+
+  &:focus,
+  &:hover {
+    background: var(--pri-color-drk);
+  }
+}
+
+.snipcart__box--badge {
+  background-color: var(--tri-color);
+}
+
+.snipcart-input {
+
+  border: 0;
+
+  input[type=text],
+  input[type=email],
+  input[type=tel],
+  input[type=password],
+  input[type=number],
+  input[type=search],
+  input[type=textarea],
+  select,
+  textarea {
+    appearance: none;
+    background-color: var(--color-p);
+    border: var(--bor);
+    border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+    box-shadow: var(--shadow-sm);
+    color: inherit;
+    font-family: inherit;
+    font-size: var(--paragraph);
+    height: auto;
+    margin-bottom: 0;
+  }
+}
+
+.snipcart-form__address-autocomplete>.snipcart-textbox {
+  appearance: none;
+  background-color: var(--color-p);
+  border: var(--bor);
+  border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+  box-shadow: var(--shadow-sm);
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--paragraph);
+  height: auto;
+  margin-bottom: 0;
+}
+
+.snipcart-form__select {
+  appearance: none;
+  background-color: var(--color-p);
+  border: var(--bor);
+  border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+  box-shadow: var(--shadow-sm);
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--paragraph);
+  height: auto;
+  margin-bottom: 0;
+}

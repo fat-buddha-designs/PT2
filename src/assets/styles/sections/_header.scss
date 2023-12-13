@@ -1,0 +1,94 @@
+header {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0;
+
+    .hero--image {
+      border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+      z-index: 1;
+    }
+
+    .hero--text {
+      background-color: var(--color-p);
+      border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+      box-shadow: var(--shadow-sm);
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -6vh;
+      padding: 1rem;
+      position: relative;
+      width: 90vw;
+      z-index: 899;
+
+      .icon {
+        height: 1em;
+        margin-right: .5rem;
+        width: 1em;
+      }
+
+      a {
+        color: var(--pri-color);
+        font-family: var(--h-font);
+        font-size: var(--header-text);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      p {
+        margin: 1.5rem 0;
+      }
+    }
+  }
+}
+
+
+@include respond-to(md) {
+  header {
+
+    .hero {
+      display: grid;
+      grid-template-columns: 30vw auto;
+
+      .hero--image {
+        order: 2;
+        z-index: 1;
+      }
+
+      .hero--text {
+        margin: 5vh -4rem 6vh 4rem;
+        padding: 1.5rem;
+        position: relative;
+        width: 28vw;
+        z-index: 2;
+      }
+    }
+  }
+}
+
+@include respond-to(lg) {
+  header {
+
+    .hero {
+      display: grid;
+      grid-template-columns: 35vw auto;
+
+      .hero--image {
+        order: 2;
+        z-index: 1;
+      }
+
+      .hero--text {
+        margin: 5vh -7vh 7vh 7vh;
+        padding: 1.5rem;
+        position: relative;
+        width: 34vw;
+        z-index: 2;
+      }
+    }
+  }
+}

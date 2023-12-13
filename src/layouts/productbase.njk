@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="{{ meta.lang }}" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ '/assets/styles/main.css' | url | cacheBust }}" media="all" />
+  {%- if pageType == "home" %}
+  <link rel="stylesheet" href="{{ '/assets/styles/frontpage.css' | url | cacheBust }}" media="all" />
+  {%- elseif pageType == "blog" %}
+  <link rel="stylesheet" href="{{ '/assets/styles/blog.css' | url | cacheBust }}" media="all" />
+  {%- elseif pageType == "contact" %}
+  <link rel="stylesheet" href="{{ '/assets/styles/contact.css' | url | cacheBust }}" media="all" />
+  {%- elseif pageType == "products" %}
+  <link rel="stylesheet" href="{{ '/assets/styles/products.css' | url | cacheBust }}" media="all" />
+  {%- elseif pageType == "search" %}
+  <link rel="stylesheet" href="{{ '/assets/styles/search.css' | url | cacheBust }}" media="all" />
+  {%- elseif pageType == "sitemap" %}
+  <link rel="stylesheet" href="{{ '/assets/styles/sitemap.css' | url | cacheBust }}" media="all" />
+  {%- endif -%}
+  <link rel="stylesheet" href="{{ "/assets/css/print.css" | url | cacheBust }}" type="text/css" media="print" />
+  <script type="module" defer src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
+></script>
+  {% include "meta.njk" %}
+</head>
+
+<body id="page-top" role="application">
+  {% svgsprite %}
+<a class="skip-link screen-reader-text" aria-label="Skip to the main page content" href="#main">Skip to content</a>
+{% include "partials/theme-switcher.njk" %}
+{% include "navigation.njk" %}
+{% include "header.njk" %}
+
+<main id="main" data-pagefind-body>
+  {{ content | safe }}
+</main>
+
+{% include "footer.njk" %}
+
+{% include "cookie-banner.njk" %}
+
+<script defer src="{{ '/assets/scripts/main.js' | url }}"></script>
+<script>
+  const cookieConsentBannerElement = document.querySelector(
+    "cookie-consent-banner"
+  );
+  cookieConsentBannerElement.availableCategories = [
+    {
+      description:
+        "Enable you to navigate and use the basic functions and to store preferences.",
+      key: "technically_required",
+      label: "Technically necessary cookies",
+      isMandatory: true,
+    },
+    {
+      description:
+        "Enable us to determine how visitors interact with our service in order to improve the user experience.",
+      key: "analytics",
+      label: "Analysis cookies",
+    },
+    {
+      description:
+        "Enable us to offer and evaluate relevant content and interest-based advertising.",
+      key: "marketing",
+      label: "Marketing cookies",
+    },
+  ];
+</script>
+<script>
+  var images = document.getElementById("divId").getElementsByTagName("img");
+
+  for (var i = 0; i < images.length; i++) {
+    images[i].onmouseover = function() {
+      this.style.cursor = "hand";
+    };
+    images[i].onmouseout = function() {
+      this.style.cursor = "pointer";
+    };
+  }
+
+  function changeImageOnClick(event) {
+    event = event || window.event;
+    var targetElement = event.target || event.srcElement;
+
+    if (targetElement.tagName == "IMG") {
+      mainImage.src = targetElement.getAttribute("src");
+    }
+  }
+</script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceworker.js')
+    }
+</script>
+</body>
+</html>

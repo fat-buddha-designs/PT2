@@ -1,0 +1,43 @@
+.full--width {
+  background-color: transparent;
+  margin-bottom: 1rem;
+  margin-left: 50%;
+  margin-top: .5rem;
+  padding: 1rem 2rem;
+  transform: translateX(-50%);
+  width: 100vw;
+
+  a {
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+@include respond-to(sm) {
+  .full--width {
+    margin-bottom: 2rem;
+    margin-top: .5rem;
+    max-width: 80vw;
+    padding: 1.5rem 2rem;
+  }
+}
+
+@include respond-to(md) {
+  .full--width {
+    margin-bottom: 2rem;
+    margin-top: .5rem;
+    padding: 1.5rem 4rem;
+  }
+}
+
+@include respond-to(lg) {
+  .full--width {
+    margin-bottom: 2rem;
+    margin-top: .5rem;
+    padding: 1.5rem 6rem;
+  }
+}

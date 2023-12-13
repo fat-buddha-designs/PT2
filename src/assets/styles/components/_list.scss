@@ -1,0 +1,41 @@
+ul {
+  line-height: var(--line-height-list);
+  list-style: none outside none;
+  margin-bottom: 1rem;
+
+  li {
+    overflow-wrap: break-word;
+    word-break: keep-all;
+  }
+
+  li::before {
+    content: none;
+  }
+}
+
+ol {
+  counter-reset: ol-counter;
+  line-height: var(--line-height-list);
+  list-style: decimal outside none;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+
+  li {
+    counter-increment: ol-counter;
+    word-break: keep-all;
+  }
+}
+
+dl {
+  line-height: var(--line-height-list);
+  list-style: none outside none;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+
+  dt {
+    font-size: var(--paragraph);
+    overflow-wrap: break-word;
+    white-space: normal;
+    word-break: keep-all;
+  }
+}

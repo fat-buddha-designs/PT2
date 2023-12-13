@@ -1,0 +1,8 @@
+{% if navigation.firstnav %}
+<ul>
+  {% for item in navigation.firstnav %}{% set externalAttribute = '' %}{% set currentAttribute = '' %}
+  {% if item.external %}{% set externalAttribute = ' rel="external"' %}{% endif %}
+  {% if page.url == item.url %}{% set currentAttribute = ' aria-current="page"' %}{% endif %}
+  <li><a aria-label="{{ item.aria }}" href="{{ item.url }}" {{ externalAttribute | safe }}{{ currentAttribute | safe }}>{{ item.text }}</a></li>{% endfor %}
+</ul>
+{% endif %}

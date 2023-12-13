@@ -1,0 +1,27 @@
+<footer>
+  <div class="n--wrapper footer--container">
+    <div class="footer--block">
+    <p class="footer--heading">Pages</p>
+      {% include "partials/footer-nav.njk" %}
+    </div>
+    <div class="footer--block">
+    <p class="footer--heading">Information</p>
+      {% include "partials/second-footer-nav.njk" %}
+    </div>
+    <div class="footer--block">
+      <p class="footer--heading">Find Us</p>
+      {% include "partials/address.njk" %}
+    </div>
+    <div class="footer--block">
+      <p class="footer--heading">Contact Us</p>
+      {% include "partials/phone.njk" %}
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>Copyright {% svg "copyright" %} {% year %} {{ meta.name }} - Website by <a href="https://fatbuddhadesigns.co.uk" aria-label="Fat Buddha Designs, Designers of this website">Fat Buddha Designs</a></p>
+    <p>Last built on <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}</time></p>
+  </div>
+</footer>
+
+<a href="#page-top" role="img" class="scrollup" aria-label="scroll to the top of this page">{% svg "angle-up" %}</a>

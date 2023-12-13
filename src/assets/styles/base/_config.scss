@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'Italiana';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+       url('../fonts/italiana-v16-latin-regular.woff2') format('woff2'),
+       url('../fonts/italiana-v16-latin-regular.woff') format('woff'),
+       url('../fonts/italiana-v16-latin-regular.svg#Italiana') format('svg');
+}
+
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local(''),
+       url('../fonts/inter-v12-latin-300.woff2') format('woff2'),
+       url('../fonts/inter-v12-latin-300.woff') format('woff'),
+       url('../fonts/inter-v12-latin-300.svg#Inter') format('svg');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+       url('../fonts/inter-v12-latin-regular.woff2') format('woff2'),
+       url('../fonts/inter-v12-latin-regular.woff') format('woff'),
+       url('../fonts/inter-v12-latin-regular.svg#Inter') format('svg');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local(''),
+       url('../fonts/inter-v12-latin-600.woff2') format('woff2'),
+       url('../fonts/inter-v12-latin-600.woff') format('woff'),
+       url('../fonts/inter-v12-latin-600.svg#Inter') format('svg');
+}
+
+:root {
+  --s-width: 65ch;
+  --n-width: 90ch;
+  --w-width: 120ch;
+  --bor-rad: 4px;
+  --bor-rad-lg: 10px;
+  --bor-width: 1px;
+  --inner-shadow: 0px 1px 1px var(--color-g-3);
+  --shadow-sm: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11);
+  --shadow-md: 0 1px 1px rgba(0, 0, 0, 0.10), 0 2px 2px rgba(0, 0, 0, 0.10), 0 4px 4px rgba(0, 0, 0, 0.10), 0 6px 8px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09), 0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09),
+  0 32px 16px rgba(0, 0, 0, 0.09);
+  --line-height: 1.5;
+  --line-height-header: 1.2;
+  --line-height-list: 1.7;
+  --h-font: 'Italiana', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --b-font: 'Inter', sans-serif;
+  --m-font: Courier New,Consolas,Courier,monospace;
+  --l-spacing: 0.02em;
+  --w-spacing: 0.08em;
+  --h-pos: left;
+  --f-wght: 300;
+  --h-font-wght: 600;
+  --p-btn-input-v: .8rem;
+  --p-btn-input-h: 1.6rem;
+  --trans: ease-in-out;
+  --dur: 0.35s;
+}

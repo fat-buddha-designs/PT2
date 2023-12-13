@@ -1,0 +1,119 @@
+:root {
+  --pri-color-h: 76;
+  --pri-color-s: 55%;
+  --pri-color-l: 30%;
+  --sec-color-h: 50;
+  --sec-color-s: 40%;
+  --sec-color-l: 20%;
+  --tri-color-h: 39;
+  --tri-color-s: 35%;
+  --tri-color-l: 75%;
+  --g-color-h: 0;
+  --g-color-s: 0%;
+  --g-color-l: 99%;
+  --f-color-h: 360;
+  --f-color-s: 0%;
+  --f-color-l: 0%;
+  --f-color-inv-h: 180;
+  --f-color-inv-s: 0%;
+  --f-color-inv-l: 95%;
+  --bkgd-color-h: 0;
+  --bkgd-color-s: 0%;
+  --bkgd-color-l: 100%;
+  --blk-color: hsl(0, 0%, 0%);
+  --wh-color: hsl(0, 0%, 100%);
+
+  --orange-hue: 15;
+  --orange-color-drk: hsl(var(--orange-hue), 70%, 30%);
+  --orange-color: hsl(var(--orange-hue), 70%, 50%);
+  --orange-color-lgt: hsl(var(--orange-hue), 70%, 70%);
+
+  --red-hue: 0;
+  --red-color-drk: hsl(var(--red-hue), 70%, 30%);
+  --red-color: hsl(var(--red-hue), 70%, 50%);
+  --red-color-lgt: hsl(var(--red-hue), 70%, 70%);
+
+  --green-hue: 120;
+  --green-color-drk: hsl(var(--green-hue), 70%, 30%);
+  --green-color: hsl(var(--green-hue), 70%, 50%);
+
+  --yellow-hue: 50;
+  --green-color-lgt: hsl(var(--green-hue), 70%, 70%);
+  --yellow-color-drk: hsl(var(--yellow-hue), 70%, 30%);
+  --yellow-color: hsl(var(--yellow-hue), 70%, 50%);
+  --yellow-color-lgt: hsl(var(--yellow-hue), 70%, 70%);
+
+  --color-p: hsl(0, 0%, 97%);
+  --color-p-1: hsl(0, 0%, 93%);
+  --color-p-2: hsl(0, 0%, 89%);
+  --color-p-3: hsl(0, 0%, 85%);
+
+  --pri-color: hsl(var(--pri-color-h), var(--pri-color-s), var(--pri-color-l));
+  --pri-color-vlgt: hsla(var(--pri-color-h), var(--pri-color-s), calc(var(--pri-color-l) / 0.8), .15);
+  --pri-color-lgt: hsl(var(--pri-color-h), var(--pri-color-s), calc(var(--pri-color-l) / 0.8));
+  --pri-color-drk: hsl(var(--pri-color-h), var(--pri-color-s), calc(var(--pri-color-l) * 0.8));
+
+  --sec-color: hsl(var(--sec-color-h), var(--sec-color-s), var(--sec-color-l));
+  --sec-color-lgt: hsl(var(--sec-color-h), var(--sec-color-s), calc(var(--sec-color-l) / 0.8));
+  --sec-color-drk: hsl(var(--sec-color-h), var(--sec-color-s), calc(var(--sec-color-l) * 0.8));
+
+  --tri-color: hsl(var(--tri-color-h), var(--tri-color-s), var(--tri-color-l));
+  --tri-color-lgt: hsl(var(--tri-color-h), var(--tri-color-s), calc(var(--tri-color-l) / 0.8));
+  --tri-color-drk: hsl(var(--tri-color-h), var(--tri-color-s), calc(var(--tri-color-l) * 0.8));
+
+  --bkgd-color: hsl(var(--bkgd-color-h), var(--bkgd-color-s), var(--bkgd-color-l));
+  --bkgd-color-lgt: hsl(var(--bkgd-color-h), var(--bkgd-color-s), calc(var(--bkgd-color-l) / 0.8));
+  --bkgd-color-drk: hsl(var(--bkgd-color-h), var(--bkgd-color-s), calc(var(--bkgd-color-l) * 0.8));
+
+  --f-color: hsl(var(--f-color-h), var(--f-color-s), var(--f-color-l));
+  --f-color-lgt: hsl(var(--f-color-h), var(--f-color-s), calc(var(--f-color-l) / 0.8));
+  --f-color-drk: hsl(var(--f-color-h), var(--f-color-s), calc(var(--f-color-l) * 0.8));
+  --f-color-inv: hsl(var(--f-color-inv-h), var(--f-color-inv-s), var(--f-color-inv-l));
+  --f-color-inv-lgt: hsl(var(--f-color-inv-h), var(--f-color-inv-s), calc(var(--f-color-inv-l) / 0.8));
+  --f-color-inv-drk: hsl(var(--f-color-inv-h), var(--f-color-inv-s), calc(var(--f-color-inv-l) * 0.8));
+
+  --g-color: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.98));
+  --g-color-1: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.92));
+  --g-color-2: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.8));
+  --g-color-3: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.7));
+  --g-color-4: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.6));
+  --g-color-5: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.5));
+  --g-color-6: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.4));
+  --g-color-7: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.3));
+  --g-color-8: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.2));
+  --g-color-9: hsl(var(--g-color-h), var(--g-color-s), calc(var(--g-color-l) * 0.1));
+  --rgba: (0, 0, 0, .05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bkgd-color-l: 15%;
+    --f-color-inv-h: 180;
+    --f-color-h: 0;
+    --f-color-l: 100%;
+    --g-color-l: 20%;
+    --pri-color-l: 60%;
+    --tri-color-l: 30%;
+    --color-p: hsl(0, 0%, 17%);
+  }
+}
+
+[data-theme='light'] {
+  --bkgd-color: hsl(var(--bkgd-color-h), var(--bkgd-color-s), var(--bkgd-color-l));
+  --f-color: hsl(var(--f-color-h), var(--f-color-s), var(--f-color-l));
+  --f-color-inv: hsl(var(--f-color-inv-h), var(--f-color-inv-s), var(--f-color-inv-l));
+  --pri-color: hsl(var(--pri-color-h), var(--pri-color-s), var(--pri-color-l));
+  --sec-color: hsl(var(--sec-color-h), var(--sec-color-s), var(--sec-color-l));
+}
+
+[data-theme='dark'] {
+  --bkgd-color-l: 15%;
+  --f-color-inv-h: 180;
+  --f-color-inv-l: 20%;
+  --f-color-h: 0;
+  --f-color-l: 100%;
+  --g-color-l: 20%;
+  --pri-color-l: 60%;
+  --tri-color-l: 30%;
+  --color-p: hsl(0, 0%, 17%);
+}

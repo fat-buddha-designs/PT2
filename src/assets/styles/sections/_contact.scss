@@ -1,0 +1,58 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem .6rem;
+
+  .contact--container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .contact--left {
+    padding: .6rem;
+
+    .icon {
+      fill: var(--pri-color);
+    }
+  }
+
+  .contact--right {
+    margin-top: 1rem;
+    padding: 0 .6rem;
+  }
+}
+
+@include respond-to(sm) {
+  .contact {
+    .contact--container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .contact--left {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .contact--right {
+      .form--row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        div {
+          margin-right: 1rem;
+        }
+
+        div:last-of-type {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+button {
+  background: var(--pri-color);
+  border: var(--bor);
+  border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+  box-shadow: var(--shadow-sm);
+  color: var(--f-color-inv);
+  cursor: pointer;
+  display: inline-block;
+  font-weight: var(--h-font-wght);
+  margin: 0;
+  margin-right: .6rem;
+  outline: none;
+  padding: var(--p-btn-input-v) var(--p-btn-input-h);
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all var(--dur) var(--trans);
+
+  &:focus,
+  &:hover {
+    background: var(--pri-color-drk);
+    color: var(--f-color-inv);
+    outline: 3px solid var(--sec-color-lgt);
+    text-decoration: none;
+  }
+
+  &:active {
+    background: var(--pri-color-lgt);
+    border-color: var(--pri-color-lgt);
+  }
+
+  &.full-width {
+    min-width: 100%;
+  }
+}
+
+.button {
+  background: var(--pri-color);
+  border: var(--bor);
+  border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+  box-shadow: var(--shadow-sm);
+  color: var(--f-color-inv);
+  cursor: pointer;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: var(--h-font-wght);
+  margin: 0 .6rem .6rem 0;
+  outline: none;
+  padding: var(--p-btn-input-v) var(--p-btn-input-h);
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all var(--dur) var(--trans);
+
+  &:focus,
+  &:hover {
+    background: var(--pri-color-drk);
+    color: var(--f-color-inv);
+    outline: 3px solid var(--sec-color-lgt);
+    text-decoration: none;
+  }
+
+  &:active {
+    background: var(--pri-color-lgt);
+    border-color: var(--pri-color-lgt);
+  }
+
+  &.full-width {
+    min-width: 100%;
+  }
+}
+
+
+.button--submit {
+  background: var(--pri-color);
+  border-radius: var(--bor-rad) var(--bor-rad-lg) var(--bor-rad) var(--bor-rad-lg);
+  box-shadow: var(--shadow-sm);
+  color: var(--f-color-inv);
+  cursor: pointer;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: var(--h-font-wght);
+  margin: 0 .6rem 0 0;
+  outline: none;
+  padding: var(--p-btn-input-v) var(--p-btn-input-h);
+  text-align: center;
+  text-decoration: none;
+  transition: all var(--dur) var(--trans);
+
+
+  &:focus,
+  &:hover {
+    background: var(--pri-color-lgt);
+    color: var(--f-color-inv);
+    font-style: italic;
+    outline: 3px solid var(--sec-color-lgt);
+  }
+
+  &.full--width {
+    width: 100%;
+  }
+
+  .button--icon {
+    margin-left: .4rem;
+    margin-right: 0;
+  }
+}

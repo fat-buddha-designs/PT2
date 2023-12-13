@@ -1,0 +1,38 @@
+:root {
+  --cookie-consent-banner-colors-primary: var(--pri-color-lgt);
+  --cookie-consent-banner-colors-primary-border: var(--f-color-inv);
+  --cookie-consent-banner-colors-primary-content: var(--f-color-inv);
+  --cookie-consent-banner-colors-secondary: transparent;
+  --cookie-consent-banner-colors-secondary-border: var(--f-color-inv);
+  --cookie-consent-banner-colors-secondary-content: var(--f-color-inv);
+  --cookie-consent-banner-colors-background-body: var(--pri-color-drk);
+  --cookie-consent-banner-colors-text: var(--f-color-inv);
+
+  --cookie-consent-banner-border-radius-buttons: var(--bor-rad);
+  --cookie-consent-banner-border-radius-body: var(--bor-rad);
+
+  --cookie-consent-banner-spacings-container-padding-top: 1rem;
+  --cookie-consent-banner-spacings-container-padding-left: 0;
+  --cookie-consent-banner-spacings-container-padding-bottom: 0;
+  --cookie-consent-banner-spacings-container-padding-right: 0;
+
+  --cookie-consent-banner-spacings-body-padding-top: 0;
+  --cookie-consent-banner-spacings-body-padding-left: 1rem;
+  --cookie-consent-banner-spacings-body-padding-bottom: 0;
+  --cookie-consent-banner-spacings-body-padding-right: 1rem;
+
+  --cookie-consent-banner-z-index-container: 99;
+
+  --cookie-consent-banner-font-family-headline: inherit;
+  --cookie-consent-banner-font-size-headline: 1.5rem;
+  --cookie-consent-banner-font-family-body: inherit;
+  --cookie-consent-banner-font-size-body: 1rem;
+}
+
+a {
+  font-size: var(--internal-cookie-consent-banner-font-size-body);
+}
+
+.cc_text {
+  line-height: 1.5;
+}

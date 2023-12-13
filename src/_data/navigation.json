@@ -1,0 +1,72 @@
+{
+  "firstnav": [
+    {
+      "text": "Home",
+      "url": "/",
+      "aria": "to the Plant Theatres And More homepage.",
+      "external": false
+    },
+    {
+      "text": "About",
+      "url": "/about/",
+      "aria": "learn a bit about Plant Theatres And More.",
+      "external": false
+    },
+    {
+      "text": "Products",
+      "url": "/products/",
+      "aria": "View the Plant Theatres And More product range.",
+      "external": false
+    },
+    {
+      "text": "News",
+      "url": "/news/",
+      "aria": "Plant Theatres And More articles.",
+      "external": false
+    },
+    {
+      "text": "Events",
+      "url": "/events/",
+      "aria": "Events where you can meet the Plant Theatres And More team.",
+      "external": false
+    },
+    {
+      "text": "Contact Us",
+      "url": "/contact-us/",
+      "aria": "Contact the team at Plant Theatres And More.",
+      "external": false
+    },
+    {
+      "text": "Search",
+      "url": "/search/",
+      "aria": "Search the Plant Theatres And More website.",
+      "external": false
+    }
+  ],
+  "secondnav": [
+    {
+      "text": "Policies",
+      "url": "/policies/",
+      "aria": "Plant Theatres And More accessibility, cookies and privacy policy.",
+      "external": false
+    },
+    {
+      "text": "Sitemap",
+      "url": "/sitemap/",
+      "aria": "Plant Theatres And More website sitemap.",
+      "external": false
+    },
+    {
+      "text": "Terms Of Use",
+      "url": "/terms-of-use/",
+      "aria": "Plant Theatres And More terms of use statement.",
+      "external": false
+    },
+    {
+      "text": "Feed",
+      "url": "/feed.xml",
+      "aria": "Plant Theatres And More RSS feed.",
+      "external": true
+    }
+  ]
+}

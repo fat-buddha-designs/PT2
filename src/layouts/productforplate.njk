@@ -1,0 +1,29 @@
+---
+layout: base
+pageType: products
+---
+
+<section class="product--block">
+  <h1>{{title}}</h1>
+  <div class="product--detail--block">
+    <div class="product--image">
+      <img src="{{ image }}" alt="{{ alt}}" >
+    </div>
+    <div class="product--details">
+      <p class="is--bold">{% svg "gbp" %}{{ price }}</p>
+    {{ content | safe }}
+    </div>
+  </div>
+  <div class="product--information--list">
+    <h2 class="is--heading">{{title}} - Product Information</h2>
+    <p>Height: <span>{{ height }}cm</span></p>
+    <p>Width: <span>{{ width }}cm</span></p>
+    <p>Depth: <span>{{ depth }}cm</span></p>
+    <p>Weight: <span>{{ weight }}kg</span></p>
+    <p>Stock Number: <span>{{ sku }}</span></p>
+  </div>
+  <div class="disclaimer--block">
+    <h3 class="is--heading">Disclaimer</h3>
+    {% include "partials/disclaimer.njk" %}
+    </div>
+</section>

@@ -1,0 +1,49 @@
+:root {
+  --auto-grid-min-size: 280px;
+}
+
+.auto--grid--fill {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size, 16rem), 1fr));
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.auto--grid--fit {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--auto-grid-min-size, 16rem), 1fr));
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.square--grid {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: var(--space-unit);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  margin-bottom: var(--space-unit);
+
+  >div {
+    background: var(--blk-color);
+    padding: 1rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    img {
+      left: 50%;
+      max-width: 100%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

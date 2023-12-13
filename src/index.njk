@@ -1,0 +1,40 @@
+---
+layout: base
+title: Quality Wooden & Steel Products
+description: "We manufacture a range of quality wooden and steel garden related products including plant theatres or display stands, bee houses, insect houses and sculptures."
+ogType: website
+jsonldType: page
+pageType: home
+keywords: ['Garden Sculptures', 'Plant Theatres', 'Steel Garden Sculptures', 'Rusty Steel Garden Products', 'Plant Displays', 'Bird Boxes', 'Bee Logs', 'Insect Hotels', 'Norfolk']
+---
+
+<section class="w--wrapper">
+  <h1>{{ title }}</h1>
+
+  <p>We manufacture a range of quality wooden and steel garden-related products from our workshop near Norwich, in Norfolk. Our main product range is plant theatres or display stands, bee houses, insect houses, bird boxes and a range of steel sculptures.</p>
+
+  <p>Insects and birds are struggling with a loss of suitable places to breed, so any little bit you can do to help will make a positive change, so to view our full range of products, including nesting boxes and insect hotels please go to the <a href="/products/" aria-label="product page">products</a> page.</p>
+
+  <p>Our wooden products are all made from thick pressure-treated wood with a couple of exceptions, and all the fixings used are stainless steel, ensuring you many years of pleasure from our products.</p>
+
+  <p>Our range of hand-made steel products are all made from un-treated mild steel, these will all rust unless treated to give a lovely warm patina but years of enjoyment too.</p>
+
+  <p>As we are a small business, we can offer a bespoke design service for some of our products, especially the screening panels, you can find out more about these on the products page.</p>
+
+  <p>We sell our range of products at various maker and garden events around Norfolk and Suffolk, you can find details about where to catch up
+    with us on the <a aria-label="head to the events page to see where you can catch up with us in person" href="/events/">events</a> page.</p>
+
+  <p>If you have any questions about our products please feel free to call, email or contact us through the <a href="/contact-us/" aria-label="contact page">contact</a> page of the website.</p>
+
+  <div class="full--width">
+    <h2>Featured Products</h2>
+    <div class="auto--grid--fit">{%- for product in featured -%}
+      <div class="block | flow">
+        <a aria-label="follow to find out more details about a {{product.Title}}" href="/products/{{ product.Title | slugify }}">
+          <img src="{{ product.image[0].url }}" alt="{{ product.imageAlt }}"></a>
+          <p class="is--heading">{{ product.Title }}</p>
+          <p>{{ product.description | truncate(80) }}</p>
+      </div>{%- endfor -%}
+    </div>
+  </div>
+</section> 

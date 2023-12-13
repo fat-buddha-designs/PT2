@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  position: relative;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+body {
+  background-color: var(--bkgd-color);
+  color: var(--f-color);
+  cursor: default;
+  height: 100%;
+  position: relative;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--tri-color) var(--wh-color);
+  scrollbar-width: thin;
+  touch-action: auto;
+  width: 100%;
+}
+
+body::-webkit-scrollbar {
+  width: 15px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--wh-color);
+  border-left: 1px dotted var(--tri-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--tri-color);
+  border: 2px solid var(--wh-color);
+  border-radius: 0;
+}
+

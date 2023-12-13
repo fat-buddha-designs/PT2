@@ -1,0 +1,9 @@
+{
+  "templateEngineOverride": "njk,md",
+  "ogType": "website",
+  "jsonldType": "page",
+  "sitemap": {
+      "changefreq": "monthly",
+      "priority": "0.6"
+    }
+}

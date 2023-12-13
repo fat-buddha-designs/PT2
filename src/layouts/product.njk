@@ -1,0 +1,47 @@
+---
+layout: productbase
+pageType: products
+---
+
+<section class="product--block">
+  <h1>{{title}}</h1>
+  <div class="product--detail--block">
+    <div id="showcase" class="img--container">
+      <img id="mainImage" class="mainImage" src="{{ product.image[0].url }}" alt="{{ product.imageAlt }}" >
+    <div class="product--image | thumbnails" id="divId" onclick="changeImageOnClick(event)">
+      {%- if (product.imageTwo[0].url) -%}
+      <img src="{{ product.imageTwo[0].url }}" alt="{{ product.imageTwoAlt }}" >
+      {%- else -%}{%- endif -%}
+      {%- if (product.imageThree[0].url) -%}
+      <img src="{{ product.imageThree[0].url }}" alt="{{ product.imageThreeAlt }}" >
+      {%- else -%}{%- endif -%}
+      {%- if (imageFour[0].url) -%}
+      <img src="{{ product.imageFour[0].url }}" alt="{{ product.imageFourAlt }}" >
+      {%- else -%}{%- endif -%}
+      {%- if (product.imageFive[0].url) -%}
+      <img src="{{ product.imageFive[0].url }}" alt="{{ product.imageFourAlt }}" >
+      {%- else -%}{%- endif -%}
+      {%- if (product.imageSix[0].url) -%}
+      <img src="{{ product.imageSix[0].url }}" alt="{{ product.imageFourAlt }}" >
+      {%- else -%}{%- endif -%}
+    </div>
+  </div>
+    <div class="product--details">
+      <p class="is--price">{% svg "gbp" %}{{ product.price }}</p>
+    </div>
+    {{ product.content | safe }}
+    {% include "partials/postage.njk" %}
+  </div>
+
+  <div class="product--information--list">
+    <h2 class="is--heading">{{title}} - Product Information</h2>
+    <p>Height: <span>{{ height }}cm</span></p>
+    <p>Width: <span>{{ width }}cm</span></p>
+    <p>Depth: <span>{{ depth }}cm</span></p>
+    <p>Weight: <span>{{ weight }}kg</span></p>
+  </div>
+  <div class="disclaimer--block">
+  <h3 class="is--heading">Disclaimer</h3>
+  {% include "partials/disclaimer.njk" %}
+  </div>
+</section>
