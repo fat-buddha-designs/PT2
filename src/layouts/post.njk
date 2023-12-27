@@ -4,15 +4,11 @@ pageType: blog
 ---
 
 <article class="post--block">
-  <a class="button" aria-label="Back to all our news articles" href="/news/">To All Articles</a>
+  <a class="button" aria-label="Back to all our news articles" href="/news/">{% svg "angle-left" %}All Our Articles</a>
   <h1>{{ article.Title }}</h1>
-  <img src="{{ article.Image[0].url }}" alt="{{ article.ImageAlt }}">
+  {{ article.pictureElement | safe }}
   <p class="is--meta">Author: {{ meta.authorName }} ~ Published: {% if article.PublishedDate %}<time datetime="{{ article.PublishedDate | dateToFormat }}">{{ article.PublishedDate | longDate }}</time></p>{% endif %}
   <p class="is--meta">Reading Time: (approx) {{ article.Content | wordStats }}</p>
-  <p class="visually--hidden" id="tags-desc">Tags that this post has been filed under.</p>
-  <ul class="tags--list" aria-labelledby="tags-desc">
-    <li class="is--meta">Category:</li>
-    <li><a aria-label="to the {{ article.Category }} category page" class="is--meta" href="/categories/{{ article.Category }}/">{{ article.Category }}</a></li>
   </ul>
   {{ article.Content | toHTML | safe }}
 </article>

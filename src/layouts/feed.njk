@@ -3,25 +3,11 @@ layout: base
 pageType: blog
 ---
 
-{% set articles = pagination.items %}
-
-{% if tag %}
-  {% set article = collections[tag] %}
-{% endif %}
-
 
 {% block content %}
 <section class="n--wrapper" data-pagefind-ignore >
   <h1 data-aos="fade-in" data-aos-delay="100">{{ title }}</h1>
-  <p class="is--bold">Categories:-</p>
-  <ul class="tags--list">
-    {% for category in articles.categories %}
-    <li><a href="/categories/{{ category.slug }}/">{{ category.title }}</a></li>
-    {% endfor %}
-    </ul>
     {% include "partials/post-list.njk" %}
-    {% if not tag %}
-      {% include "partials/pagination.njk" %}
-    {% endif %}
+    {% include "partials/pagination.njk" %}
 </section>
 {% endblock %}

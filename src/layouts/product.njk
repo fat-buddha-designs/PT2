@@ -4,12 +4,13 @@ pageType: products
 ---
 
 <section class="product--block">
-  <h1>{{title}}</h1>
+  <a class="button" aria-label="Back to all our products" href="/products/">{% svg "angle-left" %}All Our Products</a>
+  <h1>{{product.Title}}</h1>
   <div class="product--detail--block">
     <div id="showcase" class="img--container">
-      <img id="mainImage" class="mainImage" src="{{ product.image[0].url }}" alt="{{ product.imageAlt }}" >
+      {{ product.pictureElement | safe }}
     <div class="product--image | thumbnails" id="divId" onclick="changeImageOnClick(event)">
-      {%- if (product.imageTwo[0].url) -%}
+      {# {%- if (product.imageTwo[0].url) -%}
       <img src="{{ product.imageTwo[0].url }}" alt="{{ product.imageTwoAlt }}" >
       {%- else -%}{%- endif -%}
       {%- if (product.imageThree[0].url) -%}
@@ -23,7 +24,7 @@ pageType: products
       {%- else -%}{%- endif -%}
       {%- if (product.imageSix[0].url) -%}
       <img src="{{ product.imageSix[0].url }}" alt="{{ product.imageFourAlt }}" >
-      {%- else -%}{%- endif -%}
+      {%- else -%}{%- endif -%} #}
     </div>
   </div>
     <div class="product--details">
@@ -35,13 +36,17 @@ pageType: products
 
   <div class="product--information--list">
     <h2 class="is--heading">{{title}} - Product Information</h2>
-    <p>Height: <span>{{ height }}cm</span></p>
-    <p>Width: <span>{{ width }}cm</span></p>
-    <p>Depth: <span>{{ depth }}cm</span></p>
-    <p>Weight: <span>{{ weight }}kg</span></p>
+    <p>Height: <span>{{ product.height }}cm</span></p>
+    <p>Width: <span>{{ product.width }}cm</span></p>
+    <p>Depth: <span>{{ product.depth }}cm</span></p>
+    <p>Weight: <span>{{ product.weight }}kg</span></p>
   </div>
   <div class="disclaimer--block">
   <h3 class="is--heading">Disclaimer</h3>
-  {% include "partials/disclaimer.njk" %}
+  {%- if 'steel' ===  product.group  -%}
+    {% include "partials/disclaimer.njk" %}
+  {%- else -%}
+    {% include "partials/disclaimer-wood.njk" %}
+  {%- endif -%}
   </div>
 </section>

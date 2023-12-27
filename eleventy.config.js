@@ -1,7 +1,5 @@
 require('dotenv').config();
 const { execSync } = require('child_process');
-const lodash = require('lodash');
-const slugify = require('slugify');
 const {slugifyString} = require('./config/utils/index.js');
 const filters = require('./config/utils/filters.js');
 const transforms = require('./config/utils/transforms.js');
@@ -16,8 +14,8 @@ const markdownItAnchor = require('markdown-it-anchor');
 const markdownItLinkAttributes = require('markdown-it-link-attributes');
 const markdownitAbbr = require('markdown-it-abbr');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
+// const EleventyFetch  = require("@11ty/eleventy-fetch");
 const Image = require('@11ty/eleventy-img');
-const img2picture = require("eleventy-plugin-img2picture");
 const generateSocialImages = require("@fat-buddha-designs/eleventy-social-images");
 const svgSprite = require("eleventy-plugin-svg-sprite");
 const hidePastItems = (post) => {
@@ -48,73 +46,52 @@ async function imageShortcode(src, alt, sizes = "100vw") {
   let highsrc = metadata.jpeg[metadata.jpeg.length - 1];
 
   return `<picture>
-        ${Object.values(metadata).map(imageFormat => {
-          return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
-        }).join("\n")}
-          <img
-            src="${lowsrc.url}"
-            width="${highsrc.width}"
-            height="${highsrc.height}"
-            alt="${alt}"
-            loading="lazy"
-            decoding="async">
-        </picture>`;
+    ${Object.values(metadata).map(imageFormat => {
+      return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
+    }).join("\n")}
+      <img
+        src="${lowsrc.url}"
+        width="${highsrc.width}"
+        height="${highsrc.height}"
+        alt="${alt}"
+        loading="lazy"
+        decoding="async">
+    </picture>`;
 }
 
 // 	-----------Remote Image Manipulation -----------------
-async function remoteImages() {
+// async function remoteImagesShortcode(url, alt, sizes = "100vw") {
 
-    let imageBuffer = await EleventyFetch(url, {
-      duration: "1w",
-      type: "buffer",
-      directory: ".cache",
-      removeUrlQueryParams: false,
-    });
-		formats: ["webp", "jpeg"],
+//   let metadata = await EleventyFetch(url, {
+//     duration: "1w",
+//     type: "buffer",
+//     directory: ".cache",
+//     removeUrlQueryParams: false,
+//     widths: [300, 600, 1200],
+//     formats: ['webp', 'jpeg'],
+//   });
 
-    console.log( imageBuffer );
-}
+//   let lowsrc = metadata.jpeg[0];
+//   let highsrc = metadata.jpeg[metadata.jpeg.length - 1];
 
-// 	------ Get all unique key values from a collection -----------
-function getAllKeyValues(collectionArray, key) {
-  // get all values from collection
-  let allValues = collectionArray.map((item) => {
-    let values = item.data[key] ? item.data[key] : [];
-    return values;
-  });
+//   return `<picture>
+//     ${Object.values(metadata).map(imageFormat => {
+//       return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
+//     }).join("\n")}
+//       <img
+//         src="${lowsrc.url}"
+//         width="${highsrc.width}"
+//         height="${highsrc.height}"
+//         alt="${alt}"
+//         loading="lazy"
+//         decoding="async">
+//     </picture>`;
+// }
 
-  // flatten values array
-  allValues = lodash.flattenDeep(allValues);
-  // to lowercase
-  allValues = allValues.map((item) => item.toLowerCase());
-  // remove duplicates
-  allValues = [...new Set(allValues)];
-  // order alphabetically
-  allValues = allValues.sort(function (a, b) {
-    return a.localeCompare(b, "en", {
-      sensitivity: "base"
-    });
-  });
-  // return
-  return allValues;
-}
-
-// 	------ Converts the given string to a slug form -----------
-function strToSlug(str) {
-  const options = {
-    replacement: "-",
-    remove: /[&,+()$~%.'":*?<>{}]/g,
-    lower: true,
-  };
-
-  return slugify(str, options);
-}
-
-
-module.exports = function (config) {
+module.exports = function (eleventyConfig) {
 
   // -------------------- Pathfind Process -----------------------
-  config.on('eleventy.after', async () => {
+  eleventyConfig.on('eleventy.after', async () => {
     execSync(`npx pagefind --site _site --glob \"**/*.html\"`, { encoding: 'utf-8' })
   });
 
@@ -126,15 +103,15 @@ module.exports = function (config) {
     typographer: true
   };
   let markdownLibrary = markdownIt(markdown_options);
-  config.setLibrary("md", markdownLibrary);
-  config.amendLibrary("md", mdLib => mdLib.use(markdownItAnchor, [{
+  eleventyConfig.setLibrary("md", markdownLibrary);
+  eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItAnchor, [{
     slugify: slugifyString,
     tabIndex: false,
     permalink: markdownItAnchor.permalink.headerLink({
       class: 'heading--anchor'
     })
   }]));
-  config.amendLibrary("md", mdLib => mdLib.use(markdownItLinkAttributes, [{
+  eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItLinkAttributes, [{
     matcher(href) {
       return href.match(/^https?:\/\//);
     },
@@ -143,23 +120,23 @@ module.exports = function (config) {
       rel: 'noopener'
     }
   }]));
-  config.amendLibrary("md", mdLib => mdLib.use(markdownitAbbr));
-  config.addFilter("toHTML", str => {
-    return new markdownIt(markdown_options).renderInline(str);
+  eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownitAbbr));
+  eleventyConfig.addFilter("toHTML", str => {
+    return new markdownIt(markdown_options).render(str);
   });
-  config.addPlugin(pluginRss);
-  config.addPlugin(wordStats);
-  config.addPlugin(svgSprite, {
+  eleventyConfig.addPlugin(pluginRss);
+  eleventyConfig.addPlugin(wordStats);
+  eleventyConfig.addPlugin(svgSprite, {
     path: "./src/assets/icons",
     globalClasses: "icon",
   });
-	config.addPlugin(eleventySass, {
+	eleventyConfig.addPlugin(eleventySass, {
     compileOptions: {
       cache: false
     },
     postcss: postcss([cssnano, autoprefixer])
 	});
-  config.addPlugin(generateSocialImages, {
+  eleventyConfig.addPlugin(generateSocialImages, {
     promoImage: "./src/assets/images/QRcode.png",
     outputDir: "./_site/socialImages",
     urlPath: "/socialImages",
@@ -170,69 +147,60 @@ module.exports = function (config) {
     terminalBgColor: "#607622",
     lineBreakAt: "48"
   });
-  if (process.env.ELEVENTY_ENV === "production") {
-    config.addPlugin(img2picture, {
-      eleventyInputDir: 'src',
-      imagesOutputDir: "_site/assets/images",
-      urlPath: "/assets/images",
-      extensions: ["jpg", "png", "jpeg"],
-      formats :["avif", "webp", "jpeg"],
-      minWidth: 300,
-      maxWidth: 1500,
-      widthStep: 300,
-    });
-    } else {
-      config.addPassthroughCopy("/assets/images");
-    };
 
   // 	--------------------- Filters ---------------------
   Object.keys(filters).forEach((filterName) => {
-    config.addFilter(filterName, filters[filterName])
+    eleventyConfig.addFilter(filterName, filters[filterName])
   });
 
   // 	--------------------- Transforms ---------------------
   Object.keys(transforms).forEach((transformName) => {
-    config.addTransform(transformName, transforms[transformName])
+    eleventyConfig.addTransform(transformName, transforms[transformName])
   });
 
   // 	--------------------- Shortcodes ---------------------
   Object.keys(shortcodes).forEach((shortcodeName) => {
-    config.addShortcode(shortcodeName, shortcodes[shortcodeName])
+    eleventyConfig.addShortcode(shortcodeName, shortcodes[shortcodeName])
   });
 
   // 	------------------- Image Shortcodes ---------------------
-  config.addNunjucksAsyncShortcode("image", imageShortcode);
-  config.addLiquidShortcode("image", imageShortcode);
-  config.addJavaScriptFunction("image", imageShortcode);
+  eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+  eleventyConfig.addLiquidShortcode("image", imageShortcode);
+  eleventyConfig.addJavaScriptFunction("image", imageShortcode);
+
+  // 	------------------- Remote Image Shortcodes ---------------------
+  // eleventyConfig.addNunjucksAsyncShortcode("remoteImages", remoteImagesShortcode);
+  // eleventyConfig.addLiquidShortcode("remoteImages", remoteImagesShortcode);
+  // eleventyConfig.addJavaScriptFunction("remoteImages", remoteImagesShortcode);
 
   // 	--------------------- layout aliases -----------------------
-  config.addLayoutAlias('base', 'base.njk');
-  config.addLayoutAlias('feed', 'feed.njk');
-  config.addLayoutAlias('post', 'post.njk');
-  config.addLayoutAlias('product', 'product.njk');
+  eleventyConfig.addLayoutAlias('base', 'base.njk');
+  eleventyConfig.addLayoutAlias('feed', 'feed.njk');
+  eleventyConfig.addLayoutAlias('post', 'post.njk');
+  eleventyConfig.addLayoutAlias('product', 'product.njk');
 
   // 	--------------------- Custom Watch Targets -----------------------
-  config.addWatchTarget('./src/assets');
-  config.addWatchTarget('./src/data');
+  eleventyConfig.addWatchTarget('./src/assets');
+  eleventyConfig.addWatchTarget('./src/data');
 
   // 	--------------------- Passthrough File Copy -----------------------
-  config.addPassthroughCopy('src/assets/css');
-  config.addPassthroughCopy('src/assets/fonts');
-  config.addPassthroughCopy('src/assets/images');
-  config.addPassthroughCopy('src/assets/icons');
-  config.addPassthroughCopy('src/robots.txt');
-  config.addPassthroughCopy('src/.htaccess');
-  config.addPassthroughCopy('src/site.webmanifest');
-  config.addPassthroughCopy('src/android-chrome-192x192.png');
-  config.addPassthroughCopy('src/android-chrome-512x512.png');
-  config.addPassthroughCopy('src/apple-touch-icon.png');
-  config.addPassthroughCopy('src/browserconfig.xml');
-  config.addPassthroughCopy('src/favicon.ico');
-  config.addPassthroughCopy('src/icon.svg');
-  config.addPassthroughCopy('src/mstile-150x150.png');
+  eleventyConfig.addPassthroughCopy('src/assets/css');
+  eleventyConfig.addPassthroughCopy('src/assets/fonts');
+  eleventyConfig.addPassthroughCopy('src/assets/images');
+  eleventyConfig.addPassthroughCopy('src/assets/icons');
+  eleventyConfig.addPassthroughCopy('src/robots.txt');
+  eleventyConfig.addPassthroughCopy('src/.htaccess');
+  eleventyConfig.addPassthroughCopy('src/site.webmanifest');
+  eleventyConfig.addPassthroughCopy('src/android-chrome-192x192.png');
+  eleventyConfig.addPassthroughCopy('src/android-chrome-512x512.png');
+  eleventyConfig.addPassthroughCopy('src/apple-touch-icon.png');
+  eleventyConfig.addPassthroughCopy('src/browsereleventyConfig.xml');
+  eleventyConfig.addPassthroughCopy('src/favicon.ico');
+  eleventyConfig.addPassthroughCopy('src/icon.svg');
+  eleventyConfig.addPassthroughCopy('src/mstile-150x150.png');
 
   // 	--------------------- Deep-Merge -----------------------
-  config.setDataDeepMerge(true);
+  eleventyConfig.setDataDeepMerge(true);
 
   // 	--------------------- Base Config -----------------------
   return {

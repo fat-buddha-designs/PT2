@@ -195,41 +195,58 @@ strong {
   word-spacing: var(--w-spacing);
 }
 
+.clamp--lines {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
 
 :is(p, ul, ol, dl) {
   margin-bottom: var(--space-default);
-h1 {
-  margin-bottom: var(--space-l1-sm);
-}
-h2 {
-  margin-bottom: var(--space-l2-sm);
-}
-h3 {
-  margin-bottom: var(--space-l3-sm);
-}
-h4 {
-  margin-bottom: var(--space-l4-sm);
-}
-h5 {
-  margin-bottom: var(--space-l5-sm);
-}
-h6 {
-  margin-bottom: var(--space-l6-sm);
-}
+
+  h1 {
+    margin-bottom: var(--space-l1-sm);
+  }
+
+  h2 {
+    margin-bottom: var(--space-l2-sm);
+  }
+
+  h3 {
+    margin-bottom: var(--space-l3-sm);
+  }
+
+  h4 {
+    margin-bottom: var(--space-l4-sm);
+  }
+
+  h5 {
+    margin-bottom: var(--space-l5-sm);
+  }
+
+  h6 {
+    margin-bottom: var(--space-l6-sm);
+  }
 }
 
 *:has(+ h2) {
   margin-bottom: var(--space-l2-lg);
 }
+
 *:has(+ h3) {
   margin-bottom: var(--space-l3-lg);
 }
+
 *:has(+ h4) {
   margin-bottom: var(--space-l4-lg);
 }
+
 *:has(+ h5) {
   margin-bottom: var(--space-l5-lg);
 }
+
 *:has(+ h6) {
   margin-bottom: var(--space-l6-lg);
 }
@@ -237,15 +254,19 @@ h6 {
 :where(h1):has(+ h2) {
   margin-bottom: var(--space-l1-sm);
 }
+
 :where(h2):has(+ h3) {
   margin-bottom: var(--space-l2-sm);
 }
+
 :where(h3):has(+ h4) {
   margin-bottom: var(--space-l3-sm);
 }
+
 :where(h4):has(+ h5) {
   margin-bottom: var(--space-l4-sm);
 }
+
 :where(h5):has(+ h6) {
   margin-bottom: var(--space-l5-sm);
 }

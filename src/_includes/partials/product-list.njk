@@ -2,9 +2,9 @@
 <div class="auto--grid--fill">{%- for product in products -%}
   <div class="block | flow | {{ product.group }} | all">
     <a aria-label="view our {{ product.Title }}" href="{{ product.Title | slugify }}">
-      <img src="{{ product.image[0].url }}" alt="{{ product.imageAlt }}"></a>
+      {{ product.pictureElement | safe }}</a>
     <p class="is--heading">{{ product.Title }}</p>
-    {{ product.description | toHTML | safe | truncate(80) }}
+    {{ product.Description | toHTML | safe | truncate(80) }}
     <p class="is--price">{% svg "gbp" %}{{ product.price }}</p>
   </div>{%- endfor -%}
 </div>
