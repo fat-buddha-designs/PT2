@@ -6,12 +6,12 @@
     "defaults"
   ],
   "scripts": {
-    "start": "npm run dev",
-    "dev": "npm run eleventy:dev",
+    "start": "npm run eleventy:dev",
     "build": "concurrently \"npm run clean\" \"npm run eleventy:prod\" && npx pagefind --site _site ",
-    "eleventy:dev": "concurrently \"npm run clean\" \"cross-env ELEVENTY_ENV=development eleventy --serve --incremental\" ",
+    "eleventy:dev": "concurrently \"npm run clean\" \"npm run clean-cache\" \"cross-env ELEVENTY_ENV=development eleventy --serve --incremental\" ",
     "eleventy:prod": "cross-env ELEVENTY_ENV=production eleventy",
-    "clean": "del-cli _site .cache",
+    "clean": "del-cli _site",
+    "clean-cache": "del-cli .cache",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Will Moody",
