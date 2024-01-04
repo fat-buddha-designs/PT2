@@ -25,7 +25,7 @@ const nth = function (d) {
 
 const month_names = [
   'January',
-  'February',
+  'February', 
   'March',
   'April',
   'May',

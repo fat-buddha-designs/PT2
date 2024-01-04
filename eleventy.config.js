@@ -14,7 +14,6 @@ const markdownItAnchor = require('markdown-it-anchor');
 const markdownItLinkAttributes = require('markdown-it-link-attributes');
 const markdownitAbbr = require('markdown-it-abbr');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
-// const EleventyFetch  = require("@11ty/eleventy-fetch");
 const Image = require('@11ty/eleventy-img');
 const generateSocialImages = require("@fat-buddha-designs/eleventy-social-images");
 const svgSprite = require("eleventy-plugin-svg-sprite");
@@ -58,35 +57,6 @@ async function imageShortcode(src, alt, sizes = "100vw") {
         decoding="async">
     </picture>`;
 }
-
-// 	-----------Remote Image Manipulation -----------------
-// async function remoteImagesShortcode(url, alt, sizes = "100vw") {
-
-//   let metadata = await EleventyFetch(url, {
-//     duration: "1w",
-//     type: "buffer",
-//     directory: ".cache",
-//     removeUrlQueryParams: false,
-//     widths: [300, 600, 1200],
-//     formats: ['webp', 'jpeg'],
-//   });
-
-//   let lowsrc = metadata.jpeg[0];
-//   let highsrc = metadata.jpeg[metadata.jpeg.length - 1];
-
-//   return `<picture>
-//     ${Object.values(metadata).map(imageFormat => {
-//       return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
-//     }).join("\n")}
-//       <img
-//         src="${lowsrc.url}"
-//         width="${highsrc.width}"
-//         height="${highsrc.height}"
-//         alt="${alt}"
-//         loading="lazy"
-//         decoding="async">
-//     </picture>`;
-// }
 
 module.exports = function (eleventyConfig) {
 
@@ -194,7 +164,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/android-chrome-192x192.png');
   eleventyConfig.addPassthroughCopy('src/android-chrome-512x512.png');
   eleventyConfig.addPassthroughCopy('src/apple-touch-icon.png');
-  eleventyConfig.addPassthroughCopy('src/browsereleventyConfig.xml');
+  eleventyConfig.addPassthroughCopy('src/browserconfig.xml');
   eleventyConfig.addPassthroughCopy('src/favicon.ico');
   eleventyConfig.addPassthroughCopy('src/icon.svg');
   eleventyConfig.addPassthroughCopy('src/mstile-150x150.png');

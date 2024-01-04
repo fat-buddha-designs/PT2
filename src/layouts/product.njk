@@ -5,7 +5,7 @@ pageType: products
 
 <section class="product--block">
   <a class="button" aria-label="Back to all our products" href="/products/">{% svg "angle-left" %}All Our Products</a>
-  <h1>{{product.Title}}</h1>
+  <h1>{{ product.Title }}</h1>
   <div class="product--detail--block">
     <div id="showcase" class="img--container">
       {{ product.pictureElement | safe }}
