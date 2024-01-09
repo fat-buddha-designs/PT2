@@ -6,8 +6,8 @@ layout: base
 
 <main id="main" data-pagefind-body>
   <section class="content--block n--wrapper">
-    <h1>{{ title }}</h1>
-  {{ content | safe }}
+    <h1>{{ page.Title }}</h1>
+    {{ page.Content | toHTML | safe }}
   </section>
 </main>
 {% endblock %}

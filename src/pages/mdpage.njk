@@ -1,0 +1,14 @@
+---
+layout: "default.njk"
+eleventyComputed:
+  title: "{{ page.Title }}"
+  description: "{{ page.Description }}"
+  keywords: "{{ page.Keywords }}"
+pageType: products
+pagination:
+  data: pages
+  size: 1
+  alias: page
+permalink: "{{ page.permalink }}/"
+---
+

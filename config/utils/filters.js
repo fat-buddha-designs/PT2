@@ -25,7 +25,7 @@ const nth = function (d) {
 
 const month_names = [
   'January',
-  'February', 
+  'February',
   'March',
   'April',
   'May',
@@ -85,7 +85,7 @@ module.exports = {
   },
 
   month: date => {
-    return parse(date).getMonth() + 1;
+    return parse(date).getMonth() + 1; 
   },
 
   monthName: date => {

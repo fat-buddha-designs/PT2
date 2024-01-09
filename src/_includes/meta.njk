@@ -85,7 +85,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "{{title}}",
-  "image": "{{ meta.url }}{{image | replace('src', '')}}",
+  "image": "{{ meta.url }}{{ product.pictureElement | safe | stripimage }}",
   "description":"{{ description or meta.description }}",
   "inLanguage": {
   "@type": "Language",

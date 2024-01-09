@@ -15,7 +15,7 @@ module.exports = () => {
   }
 
   return new Promise((resolve, reject) => {
-    let allDatasets = [];
+    let allPages = [];
 
     base(airtableTable)
       .select({
@@ -25,7 +25,7 @@ module.exports = () => {
       .eachPage(
         function page(records, fetchNextPage) {
           records.forEach((record) => {
-            allDatasets.push({
+            allPages.push({
               id: record._rawJson.id,
               ...record._rawJson.fields,
             });
@@ -36,11 +36,10 @@ module.exports = () => {
           if (err) {
             reject(err);
           } else {
-            asset.save(allDatasets, "json");
-            resolve(allDatasets);
+            asset.save(allPages, "json");
+            resolve(allPages);
           }
         },
       );
   });
 };
-
