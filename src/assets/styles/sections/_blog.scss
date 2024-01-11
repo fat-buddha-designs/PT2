@@ -15,13 +15,31 @@
 @include respond-to(sm) {
   .post--list {
     .block {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: 250px auto;
-
       .is--heading {
         margin-top: -1rem;
       }
     }
+
+    h2 {
+      font-size: var(--heading-h6);
+    }
+
+    picture img {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .post--block {
+    picture img {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+@include respond-to(sm) {
+  .post--list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

@@ -4,6 +4,7 @@ const appendSuffix = n => {
     v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 };
+
 const lodash = require('lodash');
 const timestamp = Math.floor(Date.now() / 1000);
 
@@ -41,32 +42,28 @@ const month_names = [
 const parse = date => new Date(Date.parse(date));
 
 module.exports = {
-  iso: date => {
-    return parse(date).toISOString();
+  dateToFormat: date => {
+    date = parse(date);
+    return DateTime.fromJSDate(date, {
+      zone: 'GMT'
+    }).setLocale('en').toLocaleString(DateTime.DATE_MED);
   },
 
-  w3Date: date => {
-    return parse(date).toISOString(zone, 'utc');
+  dateToISO: date => {
+    date = parse(date);
+    return DateTime.fromJSDate(date, {
+      zone: 'GMT'
+    }).setLocale('en').toISODate({
+      includeOffset: false,
+      suppressMilliseconds: true
+    });
   },
 
-  isoShort: date => {
-    return parse(date).toISOString().split('T')[0];
-  },
-
-  local: date => {
-    return parse(date).toLocaleString();
-  },
-
-  localShort: date => {
-    return parse(date).toLocaleString().split('T')[0];
-  },
-
-  utc: date => {
-    return parse(date).toUTCString();
-  },
-
-  utcShort: date => {
-    return parse(date).toUTCString().split('T')[0];
+  dateFeed: date => {
+    date = parse(date);
+    return DateTime.fromJSDate(date, {
+      zone: 'GMT'
+    }).setLocale('en').toHTTP();
   },
 
   longDate: date => {
@@ -85,7 +82,7 @@ module.exports = {
   },
 
   month: date => {
-    return parse(date).getMonth() + 1; 
+    return parse(date).getMonth() + 1;
   },
 
   monthName: date => {

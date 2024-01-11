@@ -7,7 +7,7 @@ pageType: blog
   <a class="button" aria-label="Back to all our news articles" href="/news/">{% svg "angle-left" %}All Our Articles</a>
   <h1>{{ article.Title }}</h1>
   {{ article.pictureElement | safe }}
-  <p class="is--meta">Author: {{ meta.authorName }} ~ Published: {% if article.PublishedDate %}<time datetime="{{ article.PublishedDate | dateToFormat }}">{{ article.PublishedDate | longDate }}</time></p>{% endif %}
+  <p class="is--meta">Author: {{ meta.authorName }} ~ Published: {% if article.PublishedDate %}<time datetime="{{ article.PublishedDate | dateFeed }}">{{ article.PublishedDate | longDate }}</time></p>{% endif %}
   <p class="is--meta">Reading Time: (approx) {{ article.Content | wordStats }}</p>
   </ul>
   {{ article.Content | toHTML | safe }}
