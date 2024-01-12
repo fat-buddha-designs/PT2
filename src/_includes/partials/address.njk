@@ -1,9 +1,12 @@
-<ul>
-  <li class="is--bold">{{ meta.name }}</li>
-  <li>{{ meta.address }}</li>
-  <li>{{ meta.village }}</li>
-  <li>{{ meta.city }}</li>
-  <li>{{ meta.county }}</li>
-  <li>{{ meta.postcode }}</li>
-  <li><span class="primary--color">///</span> <a target="_blank" rel="noopener" href="https://w3w.co/{{ meta.whatThreewords }}" aria-label="Find the address with what3words">{{ meta.whatThreewords }}</a></li>
-</ul>
+<address>
+  <ul>
+  {% if meta.name %}<li class="is--bold">{{ meta.name }}</li>{% endif %}
+  {% if meta.address %}<li>{{ meta.address }}</li>{% endif %}
+  {% if meta.street %}<li>{{ meta.street }}</li>{% endif %}
+  {% if meta.village %}<li>{{ meta.village }}</li>{% endif %}
+  {% if meta.city %}<li>{{ meta.city }}</li>{% endif %}
+  {% if meta.county %}<li>{{ meta.county }}</li>{% endif %}
+  {% if meta.postcode %}<li>{{ meta.postcode }}</li>{% endif %}
+  {% if meta.whatThreewords %}<li>/// <a target="_blank" rel="noopener" href="https://w3w.co/{{ meta.whatThreewords }}" aria-label="Find the address with what3words">{{ meta.whatThreewords }}</a></li>{% endif %}
+  </ul>
+</address>

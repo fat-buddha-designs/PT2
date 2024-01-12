@@ -115,21 +115,6 @@ module.exports = {
     } ${dateObject.getFullYear()}`;
   },
 
-  dateToFormat: function (date) {
-    return DateTime.fromJSDate(date, {
-      zone: 'utc'
-    }).toLocaleString(DateTime.DATE_MED);
-  },
-
-  dateToISO: function (date) {
-    return DateTime.fromJSDate(date, {
-      zone: 'utc'
-    }).toISO({
-      includeOffset: false,
-      suppressMilliseconds: true
-    });
-  },
-
   cacheBust: function (value) {
     return `${value}?${timestamp}`;
   },
