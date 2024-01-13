@@ -20,9 +20,8 @@
   <link rel="stylesheet" href="{{ '/assets/styles/sitemap.css' | url | cacheBust }}" media="all" />
   {%- endif -%}
   <link rel="stylesheet" href="{{ "/assets/css/print.css" | url | cacheBust }}" type="text/css" media="print" />
-  <script type="module" defer src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
-></script>
   {% include "meta.njk" %}
+  <script type="module" src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"></script>
 </head>
 
 <body id="page-top" role="application">
@@ -41,6 +40,13 @@
 {% include "cookie-banner.njk" %}
 
 <script defer src="{{ '/assets/scripts/main.js' | url }}"></script>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceworker.js')
+    }
+</script>
+
 <script>
   const cookieConsentBannerElement = document.querySelector(
     "cookie-consent-banner"
@@ -67,10 +73,51 @@
     },
   ];
 </script>
+
 <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/serviceworker.js')
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "ENTERID");
+
+  function loadAnalyticsScript() {
+    const scriptElementExists = document.querySelector("[data-scriptid='ga']");
+    if (scriptElementExists || window?.ga) return;
+
+    const firstScriptElement = document.getElementsByTagName("script")[0];
+
+    const scriptElement = document.createElement("script");
+    scriptElement.type = "text/javascript";
+    scriptElement.setAttribute("async", "true");
+    scriptElement.setAttribute(
+      "src",
+      "https://www.googletagmanager.com/gtag/js?id=ENTERID"
+    );
+    scriptElement.setAttribute("data-scriptid", "ga");
+
+    firstScriptElement.parentNode.insertBefore(
+      scriptElement,
+      firstScriptElement
+    );
+  }
+  function loadScripts(event) {
+    const acceptedCategories = event?.detail?.acceptedCategories;
+
+    if (acceptedCategories.includes("analytics")) {
+      console.log("Analytics accepted.");
+
+      loadAnalyticsScript();
     }
+    if (acceptedCategories.includes("marketing")) {
+      console.log("Marketing accepted.");
+    }
+  }
+
+  window.addEventListener("cookie_consent_preferences_restored", loadScripts);
+  window.addEventListener("cookie_consent_preferences_updated", loadScripts);
 </script>
 </body>
 </html>
