@@ -85,7 +85,7 @@ async function processRemoteImages(articles) {
         // Once, you finalise the design of the page,
         // Use https://ausi.github.io/respimagelint/
         // to determine optimum 'sizes' attribute
-        sizes: "100w",
+        sizes: "100vw",
       });
 
       // This is to remove 'image' properties
