@@ -60,6 +60,10 @@ input[type='radio'] {
   padding: 1em;
 }
 
+.disclaimer--block:last-of-type {
+  margin-top: 1.5rem;
+}
+
 .product--block {
   display: flex;
   flex-direction: column;

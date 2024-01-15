@@ -5,6 +5,6 @@
       {{ product.pictureElement | safe }}</a>
     <p class="is--heading">{{ product.Title }}</p>
     {{ product.Description | toHTML | safe | truncate(80) }}
-    <p class="is--price">{% svg "gbp" %}{{ product.price }}</p>
+    <p class="is--price">{% svg "gbp" %}{{ product.price | addDecimals }}</p>
   </div>{%- endfor -%}
 </div>

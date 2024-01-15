@@ -190,6 +190,11 @@ module.exports = {
     return value;
   },
 
+  addDecimals: function (value) {
+    value = (value / 1).toFixed(2);
+    return value;
+  },
+
   capitalize: function (str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   },

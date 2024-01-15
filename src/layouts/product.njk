@@ -28,14 +28,13 @@ pageType: products
     </div>
   </div>
     <div class="product--details">
-      <p class="is--price">{% svg "gbp" %}{{ product.price }}</p>
+      <p class="is--price">{% svg "gbp" %}{{ product.price | addDecimals }}</p>
     </div>
     {{ product.content | toHTML | safe }}
-    {% include "partials/postage.njk" %}
   </div>
 
   <div class="product--information--list">
-    <h2 class="is--heading">{{title}} - Product Information</h2>
+    <h2 class="is--heading">Product Information</h2>
     <p>Height: <span>{{ product.height }}cm</span></p>
     <p>Width: <span>{{ product.width }}cm</span></p>
     <p>Depth: <span>{{ product.depth }}cm</span></p>
@@ -48,5 +47,8 @@ pageType: products
   {%- else -%}
     {% include "partials/disclaimer-wood.njk" %}
   {%- endif -%}
+  </div>
+  <div class="disclaimer--block">
+    {% include "partials/postage.njk" %}
   </div>
 </section>
