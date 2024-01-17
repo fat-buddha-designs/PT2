@@ -1,7 +1,7 @@
 <h2 class="visually--hidden">Below is a list of our quality wooden and steel outdoor products.</h2>
 <div class="auto--grid--fill">{%- for product in products -%}
   <div class="block | flow | {{ product.group }} | all">
-    <a aria-label="view our {{ product.Title }} detail page" href="{{ product.Title | slugify }}">
+    <a aria-label="view our {{ product.Title }} detail page" href="/products/{{ product.Title | slugify }}/">
       {{ product.pictureElement | safe }}</a>
     <p class="is--heading">{{ product.Title }}</p>
     {{ product.Description | toHTML | safe | truncate(80) }}
