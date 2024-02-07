@@ -20,7 +20,7 @@ eleventyExcludeFromCollections: true
   {%- endif -%}
 {%- endfor -%}
 
-{%- for item in pages -%}{% set pagesUrl %}/{{ item.Title | slugify }}/{% endset %}
+{%- for item in pages -%}{% set pagesUrl %}{{ item.permalink }}{% endset %}
   <url>
     <loc>{{  pagesUrl | url | absoluteUrl(meta.url) | lowercase }}</loc>
     <changefreq>monthly</changefreq><priority>0.6</priority>
