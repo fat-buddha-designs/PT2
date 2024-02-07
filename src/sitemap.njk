@@ -19,4 +19,25 @@ eleventyExcludeFromCollections: true
   </url>
   {%- endif -%}
 {%- endfor -%}
+
+{%- for item in pages -%}{% set pagesUrl %}/{{ item.Title | slugify }}/{% endset %}
+  <url>
+    <loc>{{  pagesUrl | url | absoluteUrl(meta.url) | lowercase }}</loc>
+    <changefreq>monthly</changefreq><priority>0.6</priority>
+  </url>
+  {%- endfor -%}
+
+  {%- for item in articles -%}{% set articleUrl %}/news/{{ item.Title | slugify }}/{% endset %}
+  <url>
+    <loc>{{  articleUrl | url | absoluteUrl(meta.url) | lowercase }}</loc>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+{%- endfor -%}
+
+{%- for item in products -%}{% set prodUrl %}/products/{{ item.Title | slugify }}/{% endset %}
+  <url>
+    <loc>{{  prodUrl | url | absoluteUrl(meta.url) | lowercase }}</loc>
+    <changefreq>monthly</changefreq><priority>0.5</priority>
+  </url>
+{%- endfor -%}
 </urlset>
