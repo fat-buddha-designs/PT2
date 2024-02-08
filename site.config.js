@@ -29,5 +29,6 @@ module.exports = {
   closes: '17:00',
   priceRange: '£15 - £200',
   generator: 'Eleventy 2.0.0',
-  themeColor: '#ffffff'
+  themeColor: '#ffffff',
+  feedDescription: 'Our feed from the great articles we produce about garden and nature related stuff'
 }
