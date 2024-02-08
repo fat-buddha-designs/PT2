@@ -1,12 +1,12 @@
 <address>
   <ul>
-  {% if meta.name %}<li class="is--bold">{{ meta.name }}</li>{% endif %}
-  {% if meta.address %}<li>{{ meta.address }}</li>{% endif %}
-  {% if meta.street %}<li>{{ meta.street }}</li>{% endif %}
-  {% if meta.village %}<li>{{ meta.village }}</li>{% endif %}
-  {% if meta.city %}<li>{{ meta.city }}</li>{% endif %}
-  {% if meta.county %}<li>{{ meta.county }}</li>{% endif %}
-  {% if meta.postcode %}<li>{{ meta.postcode }}</li>{% endif %}
-  {% if meta.whatThreewords %}<li>/// <a target="_blank" rel="noopener" href="https://w3w.co/{{ meta.whatThreewords }}" aria-label="Find the address with what3words">{{ meta.whatThreewords }}</a></li>{% endif %}
+  {% if site.name %}<li class="is--bold">{{ site.name }}</li>{% endif %}
+  {% if site.address %}<li>{{ site.address }}</li>{% endif %}
+  {% if site.street %}<li>{{ site.street }}</li>{% endif %}
+  {% if site.village %}<li>{{ site.village }}</li>{% endif %}
+  {% if site.city %}<li>{{ site.city }}</li>{% endif %}
+  {% if site.county %}<li>{{ site.county }}</li>{% endif %}
+  {% if site.postcode %}<li>{{ site.postcode }}</li>{% endif %}
+  {% if site.whatThreewords %}<li>/// <a target="_blank" rel="noopener" href="https://w3w.co/{{ site.whatThreewords }}" aria-label="Find the address with what3words">{{ site.whatThreewords }}</a></li>{% endif %}
   </ul>
 </address>

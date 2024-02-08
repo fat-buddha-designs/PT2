@@ -41,7 +41,7 @@ keywords:
       <a aria-label="to the {{ item.data.title }} article" href="{{ item.url }}" rel="bookmark">{{ item.data.title }}</a>
     </p>
     <div>
-    <p class="is--meta">Author: {{ meta.authorName }}</p>
+    <p class="is--meta">Author: {{ site.authorName }}</p>
     <p class="is--meta">Published: <time datetime="{{ item.date | dateToFormat }}">{{ item.date | dateToFormat }}</time></p>
     <p class="visually--hidden" id="tags-desc">Tags that this post has been filed under.</p>
     </div>

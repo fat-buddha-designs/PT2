@@ -6,7 +6,7 @@
     {{ article.pictureElement | safe }}
     <div>
       <p class="is--heading"><a aria-label="follow to find out more details about {{ article.Title }}" href="{{ article.Title | slugify }}" rel="bookmark">{{ article.Title }}</a></p>
-      <p class="is--meta">First published on <time datetime="{{ article.PublishedDate | dateFeed }}">{{ article.PublishedDate | longDate }}</time> by {{ meta.authorName }}</p>
+      <p class="is--meta">First published on <time datetime="{{ article.PublishedDate | dateFeed }}">{{ article.PublishedDate | longDate }}</time> by {{ site.authorName }}</p>
       <p>{{ article.Content | toHTML | safe | truncate(150) }}</p>
     </div>
   </div>

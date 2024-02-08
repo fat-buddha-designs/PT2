@@ -4,17 +4,17 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>{{ meta.title }}</title>
-    <subtitle>{{ meta.description }}</subtitle>
-    <link href="{{ meta.url }}/feed.xml" rel="self" type="application/atom+xml" />
-    <link href="{{ meta.url }}" rel="alternate" type="text/html"/>
-    <id>{{ meta.url }}</id>
+    <title>{{ site.title }}</title>
+    <subtitle>{{ site.description }}</subtitle>
+    <link href="{{ site.url }}/feed.xml" rel="self" type="application/atom+xml" />
+    <link href="{{ site.url }}" rel="alternate" type="text/html"/>
+    <id>{{ site.url }}</id>
     <author>
-        <name>{{ meta.authorName }}</name>
-        <email>{{ meta.email }}</email>
+        <name>{{ site.authorName }}</name>
+        <email>{{ site.email }}</email>
     </author>
     {%- for article in articles | reverse -%}
-    {% set absolutePostUrl %}{{ article.url | url | absoluteUrl(meta.url) }}{% endset %}
+    {% set absolutePostUrl %}{{ article.url | url | absoluteUrl(site.url) }}{% endset %}
         <entry>
             <title>{{ article.Title }}</title>
             <link href="{{ absolutePostUrl }}"/>

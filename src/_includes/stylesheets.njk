@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="{{ "/assets/styles/main.css" | url | cacheBust  }}" type="text/css" media="all" />
+{%- if pageType === 'home' %}
+<link rel="stylesheet" href="{{ '/assets/styles/frontpage.css' | url | cacheBust }}" type="text/css" media="all" />
+{%- elseif pageType === 'contact' %}
+<link rel="stylesheet" href="{{ '/assets/styles/contact.css' | url | cacheBust }}" type="text/css" media="all" />
+{%- elseif pageType === 'blog' %}
+<link rel="stylesheet" href="{{ '/assets/styles/blog.css' | url | cacheBust }}" type="text/css" media="all" />
+{%- elseif pageType === 'products' %}
+<link rel="stylesheet" href="{{ '/assets/styles/products.css' | url | cacheBust }}" type="text/css" media="all" />
+{%- elseif pageType === 'search' %}
+<link rel="stylesheet" href="{{ '/assets/styles/search.css' | url | cacheBust }}" type="text/css" media="all" />
+{%- elseif pageType === 'sitemap' %}
+<link rel="stylesheet" href="{{ '/assets/styles/sitemap.css' | url | cacheBust }}" type="text/css" media="all" />
+{%- endif -%}
+<link rel="stylesheet" href="{{ "/assets/css/print.css" | url | cacheBust  }}" type="text/css" media="print" />

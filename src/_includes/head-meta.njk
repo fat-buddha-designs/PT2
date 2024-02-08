@@ -1,44 +1,52 @@
-{% set absolutePageUrl = page.url | url | absoluteUrl(meta.url) %}
-{% set pageTitle = title + ' | ' + meta.name %}
+{% set absolutePageUrl = page.url | url | absoluteUrl(site.url) %}
+{% set pageTitle = title + ' | ' + site.name %}
 {% set jsonldType = jsonldType %}
 {% if metaTitle %}{% set pageTitle = metaTitle %}{% endif %}
-{% set metaImage = meta_image if meta_image else meta.metaImage %}
+{% set metaImage = meta_image if meta_image else site.metaImage %}
 {% set eleventyVersion = pkg.dependencies['@11ty/eleventy'] | replace("^", "") %}
 {% if permalink == "/" %}
-  {% set canonicalUrl = meta.url %}
+  {% set canonicalUrl = site.url %}
 {% else %}
-  {% set canonicalUrl = meta.url + page.url %}
+  {% set canonicalUrl = site.url + page.url %}
 {% endif %}
 {# General #}
 <title>{{ pageTitle | escape }}</title>
-<meta name="description" content="{{ description or excerpt or meta.description | truncate(160) }}" />
+<meta name="description" content="{{ description or excerpt or site.description | truncate(160) }}" />
 <meta name="keywords" content="{{ keywords }}" />
-<meta name="author" content="{{ meta.authorName }}" />
-<link rel="author" href="humans.txt" />
+<meta name="author" content="{{ site.authorName }}" />
+{% if indexable == "no-index" %}
+<meta name="robots" content="no-index, no-index" />
+{% else %}
 <meta name="robots" content="index, follow" />
-<meta name="googlebot" content="index,follow" />
+{% endif %}
+{% if indexable == "no-index" %}
+<meta name="googlebot" content="no-index, no-index" />
+{% else %}
+<meta name="googlebot" content="index, follow" />
+{% endif %}
 <meta name="generator" content="Eleventy v{{ eleventyVersion }}" />
 <link rel="canonical" href="{{ canonicalUrl | lowercase }}" />
-<link rel="shortlink" href="{{ meta.url }}" />
+<link rel="shortlink" href="{{ site.url }}" />
+<link rel="author" href="{{ site.url }}/humans.txt" />
 <meta name="color-scheme" content="light dark" />
 <meta name="HandheldFriendly" content="true" />
 {# Open Graph #}
 <meta property="og:title" content="{{ pageTitle | escape }}" />
 <meta property="og:type" content="{{ ogType }}" />
-<meta property="og:site_name" content="{{ meta.title }}" />
-<meta property="og:description" content="{{ description or excerpt or meta.description | truncate(160) }}" />
+<meta property="og:site_name" content="{{ site.title }}" />
+<meta property="og:description" content="{{ description or excerpt or site.description | truncate(160) }}" />
 <meta property="og:url" content="{{ canonicalUrl | lowercase }}" />
-<meta property="og:locale" content="{{ meta.locale }}" />
-<meta property="og:image" content="{{ meta.url }}{% GenerateSocialImage title %}" />
-<meta property="og:image:alt" content="Page image for {{ meta.name }}" />
+<meta property="og:locale" content="{{ site.locale }}" />
+<meta property="og:image" content="{{ site.url }}{% GenerateSocialImage title %}" />
+<meta property="og:image:alt" content="Page image for {{ site.name }}" />
 {# Twitter #}
 <meta name="twitter:title" content="{{ pageTitle }}" />
 <meta name="twitter:card" content="{% if metaImage -%}summary_large_image{% else %}summary{% endif %}" />
-<meta name="twitter:site" content="@{{ meta.twitterCreator | replace('@', '') }}" />
-<meta name="twitter:creator" content="@{{ meta.twitterCreator | replace('@', '') }}" />
-<meta name="twitter:description" content="{{ description or excerpt or meta.description | truncate(160) }}" />
-<meta name="twitter:image" content="{{ meta.url }}{% GenerateSocialImage title %}" />
-<meta name="twitter:image:alt" content="Page image for {{ meta.name }}" />
+<meta name="twitter:site" content="@{{ site.twitterCreator | replace('@', '') }}" />
+<meta name="twitter:creator" content="@{{ site.twitterCreator | replace('@', '') }}" />
+<meta name="twitter:description" content="{{ description or excerpt or site.description | truncate(160) }}" />
+<meta name="twitter:image" content="{{ site.url }}{% GenerateSocialImage title %}" />
+<meta name="twitter:image:alt" content="Page image for {{ site.name }}" />
 <meta name="twitter:dnt" content="on" />
 
 {%- if jsonldType === 'page' -%}
@@ -46,36 +54,36 @@
 <script type="application/ld+json"> {
   "@context": "http://www.schema.org",
   "@type": "LocalBusiness",
-  "name": "{{ meta.name }}",
-  "url":" {{ meta.url + page.url }}",
-  "logo": "{{ meta.url }}/assets/images/om.png",
-  "image": "{{ meta.url }}{% GenerateSocialImage title %}",
-  "description": "{{ description or meta.description }}",
+  "name": "{{ site.name }}",
+  "url":" {{ site.url + page.url }}",
+  "logo": "{{ site.url }}/assets/images/om.png",
+  "image": "{{ site.url }}{% GenerateSocialImage title %}",
+  "description": "{{ description or site.description }}",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "{{ meta.address }}, {{ meta.village }}",
-    "addressLocality": "{{ meta.city }}",
-    "addressRegion": "{{ meta.county }}",
-    "postalCode": "{{ meta.postcode }}",
+    "streetAddress": "{{ site.address }}, {{ site.village }}",
+    "addressLocality": "{{ site.city }}",
+    "addressRegion": "{{ site.county }}",
+    "postalCode": "{{ site.postcode }}",
     "addressCountry": "United Kingdom"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "{{ meta.latitude }}",
-    "longitude": "{{ meta.longitude }}"
+    "latitude": "{{ site.latitude }}",
+    "longitude": "{{ site.longitude }}"
   },
-  "telephone": "{{ meta.intPhone }}",
-  "email": "{{ meta.email }}",
-  "priceRange": "{{ meta.priceRange }}",
+  "telephone": "{{ site.intPhone }}",
+  "email": "{{ site.email }}",
+  "priceRange": "{{ site.priceRange }}",
   "openingHoursSpecification": {
   "@type": "OpeningHoursSpecification",
     "dayOfWeek ":["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens":"{{ meta.opens }}",
-    "closes":"{{ meta.closes }}"
+    "opens":"{{ site.opens }}",
+    "closes":"{{ site.closes }}"
   },
   "sameAs": [
-    "{{ meta.instaSite }}",
-    "{{ meta.facebookSite }}"
+    "{{ site.instaSite }}",
+    "{{ site.facebookSite }}"
   ]
 }
 </script>
@@ -86,15 +94,15 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "{{title}}",
-  "image": "{{ meta.url }}{{ product.pictureElement | safe | stripimage }}",
-  "description":"{{ description or meta.description }}",
+  "image": "{{ site.url }}{{ product.pictureElement | safe | stripimage }}",
+  "description":"{{ description or site.description }}",
   "inLanguage": {
   "@type": "Language",
-  "name": "{{ meta.language }}",
-  "alternateName": "{{ meta.lang }}"
+  "name": "{{ site.language }}",
+  "alternateName": "{{ site.lang }}"
   },
   "sku": "{{ sku }}",
-  "brand": "{{ meta.name }}",
+  "brand": "{{ site.name }}",
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5",
@@ -116,26 +124,26 @@
 {
 	"@context": "https://schema.org",
 	"@type": "Blogposting",
-	"url": "{{ meta.url + page.url }}",
+	"url": "{{ site.url + page.url }}",
 	"mainEntityOfPage": {
 	"@type": "WebPage",
 	"@id": "{{ title }}"
   },
   "inLanguage": {
   "@type": "Language",
-  "name": "{{ meta.language }}",
-  "alternateName": "{{ meta.lang }}"
+  "name": "{{ site.language }}",
+  "alternateName": "{{ site.lang }}"
   },
 	"author": {
 	"@type": "person",
-	"name": "{{ meta.authorName }}"
+	"name": "{{ site.authorName }}"
   },
 	"publisher": {
 	"@type": "Organization",
-	"name": "{{ meta.name }}"
+	"name": "{{ site.name }}"
   },
 	"headline": "{{ title }}",
-	"image": "{{ meta.url }}{% GenerateSocialImage title %}",
+	"image": "{{ site.url }}{% GenerateSocialImage title %}",
 	"datepublished": "{{ date }}",
 	"datemodified": "{{ dateupdated }}"
 }
@@ -150,7 +158,7 @@
 <link rel="icon" href={{ '/favicon.ico' | url }} sizes="any" />
 <link rel="manifest" href="{{ '/site.webmanifest' | url }}" />
 <meta name="msapplication-TileColor" content="#da532c" />
-<meta name="theme-color" content="{{ meta.themeColor }}" />
+<meta name="theme-color" content="{{ site.themeColor }}" />
 {# RSS Feed #}
-<link type="application/atom+xml" rel="alternate" href="{{ meta.url }}/feed.xml" title="{{ meta.title }}">
+<link type="application/atom+xml" rel="alternate" href="{{ site.url }}/feed.xml" title="{{ site.title }}">
 

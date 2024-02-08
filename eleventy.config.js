@@ -4,6 +4,7 @@ const {slugifyString} = require('./config/utils/index.js');
 const filters = require('./config/utils/filters.js');
 const transforms = require('./config/utils/transforms.js');
 const shortcodes = require('./config/utils/shortcodes.js');
+const site = require('./site.config.js');
 const eleventySass = require('eleventy-sass');
 const postcss = require("postcss");
 const cssnano = require("cssnano");
@@ -59,6 +60,9 @@ async function imageShortcode(src, alt, sizes = "100vw") {
 }
 
 module.exports = function (eleventyConfig) {
+
+  // ----------------- Global Data -----------------
+  eleventyConfig.addGlobalData('site', site);
 
   // -------------------- Pathfind Process -----------------------
   eleventyConfig.on('eleventy.after', async () => {
