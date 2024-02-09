@@ -66,6 +66,13 @@ module.exports = {
     }).setLocale('en').toHTTP();
   },
 
+  dateRFC3339: date => {
+    date = parse(date);
+    return DateTime.fromJSDate(date, {
+      zone: 'GMT'
+    }).toString("yyyy-MM-dd'T'HH:mm:ss.fffK");
+  },
+
   longDate: date => {
     date = parse(date);
     let day = date.getDate();
