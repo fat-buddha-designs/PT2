@@ -82,15 +82,6 @@ module.exports = function (eleventyConfig) {
     slugify: slugifyString,
     tabIndex: false,
   }]));
-  eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItLinkAttributes, [{
-    matcher(href) {
-      return href.match(/^https?:\/\//);
-    },
-    attrs: {
-      target: '_blank',
-      rel: 'noopener'
-    }
-  }]));
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownitAbbr));
   eleventyConfig.addFilter("toHTML", str => {
     return new markdownIt(markdown_options).render(str);
