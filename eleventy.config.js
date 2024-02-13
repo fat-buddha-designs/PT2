@@ -81,9 +81,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItAnchor, [{
     slugify: slugifyString,
     tabIndex: false,
-    permalink: markdownItAnchor.permalink.headerLink({
-      class: 'heading--anchor'
-    })
   }]));
   eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItLinkAttributes, [{
     matcher(href) {

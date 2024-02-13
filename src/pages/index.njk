@@ -27,7 +27,7 @@ keywords: ['Wooden Plant Theatres', 'Garden Sculptures', 'Steel Garden Sculpture
     <h2>Featured Products</h2>
     <div class="auto--grid--fit">{%- for product in featured -%}
       <div class="block | flow">
-        <a aria-label="follow to find out more details about a {{ product.Title }}" href="/products/{{ product.Title | slugify }}">
+        <a aria-label="follow to find out more details about a {{ product.Title }}" href="/products/{{ product.Title | slugify }}/">
           {{ product.pictureElement | safe }}</a>
           <p class="is--heading">{{product.Title}}</p>
           <p>{{ product.Description }}</p>
