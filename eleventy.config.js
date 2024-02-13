@@ -11,23 +11,10 @@ const cssnano = require("cssnano");
 const autoprefixer = require("autoprefixer");
 const wordStats = require('@photogabble/eleventy-plugin-word-stats');
 const markdownIt = require('markdown-it');
-const markdownItAnchor = require('markdown-it-anchor');
-const markdownItLinkAttributes = require('markdown-it-link-attributes');
-const markdownitAbbr = require('markdown-it-abbr');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const Image = require('@11ty/eleventy-img');
 const generateSocialImages = require("@fat-buddha-designs/eleventy-social-images");
 const svgSprite = require("eleventy-plugin-svg-sprite");
-const hidePastItems = (post) => {
-  let now = new Date().getTime();
-  if (now > post.date.getTime()) return false;
-  return true;
-};
-const hideFutureItems = (post) => {
-  let now = new Date().getTime();
-  if (now < post.date.getTime()) return false;
-  return true;
-};
 
 // 	--------------- Image Manipulation -----------------
 async function imageShortcode(src, alt, sizes = "100vw") {
@@ -64,12 +51,12 @@ module.exports = function (eleventyConfig) {
   // ----------------- Global Data -----------------
   eleventyConfig.addGlobalData('site', site);
 
-  // -------------------- Pathfind Process -----------------------
+  // --------------- Pathfind Process -----------------
   eleventyConfig.on('eleventy.after', async () => {
     execSync(`npx pagefind --site _site --glob \"**/*.html\"`, { encoding: 'utf-8' })
   });
 
-  // 	--------------------- Markdown ---------------------
+  // 	------------------- Markdown ---------------------
   const markdown_options = {
     html: true,
     breaks: false,
@@ -78,14 +65,11 @@ module.exports = function (eleventyConfig) {
   };
   let markdownLibrary = markdownIt(markdown_options);
   eleventyConfig.setLibrary("md", markdownLibrary);
-  eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownItAnchor, [{
-    slugify: slugifyString,
-    tabIndex: false,
-  }]));
-  eleventyConfig.amendLibrary("md", mdLib => mdLib.use(markdownitAbbr));
   eleventyConfig.addFilter("toHTML", str => {
     return new markdownIt(markdown_options).render(str);
   });
+
+  // 	---------------- Plugins ---------------------
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(wordStats);
   eleventyConfig.addPlugin(svgSprite, {
@@ -136,7 +120,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLayoutAlias('post', 'post.njk');
   eleventyConfig.addLayoutAlias('product', 'product.njk');
 
-  // 	--------------------- Custom Watch Targets -----------------------
+  // 	-------------- Custom Watch Targets ------------------
   eleventyConfig.addWatchTarget('./src/assets');
   eleventyConfig.addWatchTarget('./src/data');
 

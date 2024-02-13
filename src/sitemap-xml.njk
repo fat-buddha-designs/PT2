@@ -2,14 +2,14 @@
 permalink: /sitemap.xml
 layout: null
 eleventyExcludeFromCollections: true
-excludeFromSitemap: true
+eleventyExcludeFromSitemap: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for item in collections.all -%}
   {%- if not item.data.excludeFromSitemap and item.url -%}
   <url>
-    <loc>{{ item.url | url | absoluteUrl(site.url) }}</loc>
+    <loc>{{ item.url | absoluteUrl(site.url) }}</loc>
     <lastmod>{{ item.date.toISOString() }}</lastmod>
     {%- if item.data.sitemap.changefreq -%}
       <changefreq>{{ item.data.sitemap.changefreq }}</changefreq>
@@ -23,21 +23,21 @@ excludeFromSitemap: true
 
 {%- for item in pages -%}{% set pagesUrl %}{{ item.permalink }}{% endset %}
   <url>
-    <loc>{{  pagesUrl | url | absoluteUrl(site.url) | lowercase }}</loc>
+    <loc>{{  pagesUrl | absoluteUrl(site.url) }}</loc>
     <changefreq>monthly</changefreq><priority>0.6</priority>
   </url>
   {%- endfor -%}
 
   {%- for item in articles -%}{% set articleUrl %}/news/{{ item.Title | slugify }}/{% endset %}
   <url>
-    <loc>{{  articleUrl | url | absoluteUrl(site.url) | lowercase }}</loc>
+    <loc>{{  articleUrl | absoluteUrl(site.url) }}</loc>
     <changefreq>monthly</changefreq><priority>0.5</priority>
   </url>
 {%- endfor -%}
 
 {%- for item in products -%}{% set prodUrl %}/products/{{ item.Title | slugify }}/{% endset %}
   <url>
-    <loc>{{  prodUrl | url | absoluteUrl(site.url) | lowercase }}</loc>
+    <loc>{{  prodUrl | absoluteUrl(site.url) }}</loc>
     <changefreq>monthly</changefreq><priority>0.5</priority>
   </url>
 {%- endfor -%}
