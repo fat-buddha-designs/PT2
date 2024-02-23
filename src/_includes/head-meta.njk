@@ -15,14 +15,14 @@
 <meta name="keywords" content="{{ keywords }}" />
 <meta name="author" content="{{ site.authorName }}" />
 {% if indexable == "no-index" %}
-<meta name="robots" content="no-index, no-index" />
+<meta name="robots" content="noindex" />
 {% else %}
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="all" />
 {% endif %}
 {% if indexable == "no-index" %}
-<meta name="googlebot" content="no-index, no-index" />
+<meta name="googlebot" content="noindex" />
 {% else %}
-<meta name="googlebot" content="index, follow" />
+<meta name="googlebot" content="all" />
 {% endif %}
 <meta name="google" content="nositelinkssearchbox" />
 <meta name="google" content="notranslate" />

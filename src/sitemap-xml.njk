@@ -2,12 +2,13 @@
 permalink: /sitemap.xml
 layout: null
 eleventyExcludeFromCollections: true
-eleventyExcludeFromSitemap: true
+sitemap:
+  ignore: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for item in collections.all -%}
-  {%- if not item.data.excludeFromSitemap and item.url -%}
+  {%- if not item.data.sitemap.ignore == true %}
   <url>
     <loc>{{ item.url | absoluteUrl(site.url) }}</loc>
     <lastmod>{{ item.date.toISOString() }}</lastmod>
