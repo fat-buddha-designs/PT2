@@ -25,7 +25,7 @@
 
   {% include "footer.njk" %}
 
-<script defer src="{{ '/assets/scripts/main.js' | url }}"></script>
+<script type="module" src="{{ '/assets/scripts/main.js' | url | cacheBust }}"></script>
 <script src="{{ '/assets/scripts/vendor/cookie-notification.js' | url | cacheBust }}"></script>
 <script>
   if ('serviceWorker' in navigator) {
@@ -33,7 +33,7 @@
   }
 </script>
 <script>
-  GdprConsent.attachBanner(document.getElementById('banner'), {
+  GdprConsent.attachBanner(document.getElementById('cookie-banner'), {
     cookieName: 'test_gdpr',
     categories: {
       analytics: function () {
