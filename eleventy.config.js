@@ -129,6 +129,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/assets/fonts');
   eleventyConfig.addPassthroughCopy('src/assets/images');
   eleventyConfig.addPassthroughCopy('src/assets/icons');
+  eleventyConfig.addPassthroughCopy('src/assets/scripts/vendor');
   eleventyConfig.addPassthroughCopy('src/robots.txt');
   eleventyConfig.addPassthroughCopy('src/.htaccess');
   eleventyConfig.addPassthroughCopy('src/site.webmanifest');

@@ -7,76 +7,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   {% include "stylesheets.njk" %}
   {% include "head-meta.njk" %}
-  <script type="module" src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"></script>
+  {# Analytics #}
+  <script defer data-domain="planttheatresandmore.co.uk" src="https://plausible.io/js/script.js"></script>
 </head>
 
 <body id="page-top" role="application">
+  {% include "cookie-banner.njk" %}
   {% svgsprite %}
-<a class="skip-link screen-reader-text" aria-label="Skip to the main page content" href="#main">Skip to content</a>
-{% include "partials/theme-switcher.njk" %}
-{% include "navigation.njk" %}
-{% include "header.njk" %}
+  <a class="skip-link screen-reader-text" aria-label="Skip to the main page content" href="#main">Skip to content</a>
+  {% include "partials/theme-switcher.njk" %}
+  {% include "navigation.njk" %}
+  {% include "header.njk" %}
 
-<main id="main" data-pagefind-body>
-  {{ content | safe }}
-</main>
+  <main id="main" data-pagefind-body>
+    {{ content | safe }}
+  </main>
 
-{% include "footer.njk" %}
-
-{% include "cookie-banner.njk" %}
+  {% include "footer.njk" %}
 
 <script defer src="{{ '/assets/scripts/main.js' | url }}"></script>
+<script src="{{ '/assets/scripts/vendor/cookie-notification.js' | url | cacheBust }}"></script>
 <script>
-  const cookieConsentBannerElement = document.querySelector(
-    "cookie-consent-banner"
-  );
-  cookieConsentBannerElement.availableCategories = [
-    {
-      description:
-        "Enable you to navigate and use the basic functions and to store preferences.",
-      key: "technically_required",
-      label: "Technically necessary cookies",
-      isMandatory: true,
-    },
-    {
-      description:
-        "Enable us to determine how visitors interact with our service in order to improve the user experience.",
-      key: "analytics",
-      label: "Analysis cookies",
-    },
-    {
-      description:
-        "Enable us to offer and evaluate relevant content and interest-based advertising.",
-      key: "marketing",
-      label: "Marketing cookies",
-    },
-  ];
-</script>
-<script>
-  var images = document.getElementById("divId").getElementsByTagName("img");
-
-  for (var i = 0; i < images.length; i++) {
-    images[i].onmouseover = function() {
-      this.style.cursor = "hand";
-    };
-    images[i].onmouseout = function() {
-      this.style.cursor = "pointer";
-    };
-  }
-
-  function changeImageOnClick(event) {
-    event = event || window.event;
-    var targetElement = event.target || event.srcElement;
-
-    if (targetElement.tagName == "IMG") {
-      mainImage.src = targetElement.getAttribute("src");
-    }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/serviceworker.js')
   }
 </script>
 <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/serviceworker.js')
+  GdprConsent.attachBanner(document.getElementById('banner'), {
+    cookieName: 'test_gdpr',
+    categories: {
+      analytics: function () {
+        console.info('Dropped analytics cookies')
+      },
+      necessary: function () {
+        console.info('Dropped necessary cookies')
+      }
+    },
+    choices: {
+      necessary: {
+        label: 'Necessary Things',
+        description: 'Super important',
+        value: true
+      },
+      analytics: false
     }
+  })
 </script>
 </body>
 </html>

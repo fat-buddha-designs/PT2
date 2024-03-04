@@ -7,103 +7,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   {% include "stylesheets.njk" %}
   {% include "head-meta.njk" %}
-  <script type="module" src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"></script>
+  {# Analytics #}
+  <script defer data-domain="planttheatresandmore.co.uk" src="https://plausible.io/js/script.js"></script>
 </head>
 
 <body id="page-top" role="application">
+  {% include "cookie-banner.njk" %}
   {% svgsprite %}
-<a class="skip-link screen-reader-text" aria-label="Skip to the main page content" href="#main">Skip to content</a>
-{% include "partials/theme-switcher.njk" %}
-{% include "navigation.njk" %}
-{% include "header.njk" %}
+  <a class="skip-link screen-reader-text" aria-label="Skip to the main page content" href="#main">Skip to content</a>
+  {% include "partials/theme-switcher.njk" %}
+  {% include "navigation.njk" %}
+  {% include "header.njk" %}
 
-<main id="main" data-pagefind-body>
-  {{ content | safe }}
-</main>
+  <main id="main" data-pagefind-body>
+    {{ content | safe }}
+  </main>
 
-{% include "footer.njk" %}
-
-{% include "cookie-banner.njk" %}
+  {% include "footer.njk" %}
 
 <script defer src="{{ '/assets/scripts/main.js' | url }}"></script>
-
+<script src="{{ '/assets/scripts/vendor/cookie-notification.js' | url | cacheBust }}"></script>
 <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/serviceworker.js')
-    }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/serviceworker.js')
+  }
 </script>
-
 <script>
-  const cookieConsentBannerElement = document.querySelector(
-    "cookie-consent-banner"
-  );
-  cookieConsentBannerElement.availableCategories = [
-    {
-      description:
-        "Enable you to navigate and use the basic functions and to store preferences.",
-      key: "technically_required",
-      label: "Technically necessary cookies",
-      isMandatory: true,
+  GdprConsent.attachBanner(document.getElementById('banner'), {
+    cookieName: 'test_gdpr',
+    categories: {
+      analytics: function () {
+        console.info('Dropped analytics cookies')
+      },
+      necessary: function () {
+        console.info('Dropped necessary cookies')
+      }
     },
-    {
-      description:
-        "Enable us to determine how visitors interact with our service in order to improve the user experience.",
-      key: "analytics",
-      label: "Analysis cookies",
-    },
-    {
-      description:
-        "Enable us to offer and evaluate relevant content and interest-based advertising.",
-      key: "marketing",
-      label: "Marketing cookies",
-    },
-  ];
-</script>
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-
-  gtag("config", "ENTERID");
-
-  function loadAnalyticsScript() {
-    const scriptElementExists = document.querySelector("[data-scriptid='ga']");
-    if (scriptElementExists || window?.ga) return;
-
-    const firstScriptElement = document.getElementsByTagName("script")[0];
-
-    const scriptElement = document.createElement("script");
-    scriptElement.type = "text/javascript";
-    scriptElement.setAttribute("async", "true");
-    scriptElement.setAttribute(
-      "src",
-      "https://www.googletagmanager.com/gtag/js?id=ENTERID"
-    );
-    scriptElement.setAttribute("data-scriptid", "ga");
-
-    firstScriptElement.parentNode.insertBefore(
-      scriptElement,
-      firstScriptElement
-    );
-  }
-  function loadScripts(event) {
-    const acceptedCategories = event?.detail?.acceptedCategories;
-
-    if (acceptedCategories.includes("analytics")) {
-      console.log("Analytics accepted.");
-
-      loadAnalyticsScript();
+    choices: {
+      necessary: {
+        label: 'Necessary Things',
+        description: 'Super important',
+        value: true
+      },
+      analytics: false
     }
-    if (acceptedCategories.includes("marketing")) {
-      console.log("Marketing accepted.");
-    }
-  }
-
-  window.addEventListener("cookie_consent_preferences_restored", loadScripts);
-  window.addEventListener("cookie_consent_preferences_updated", loadScripts);
+  })
 </script>
 </body>
 </html>
