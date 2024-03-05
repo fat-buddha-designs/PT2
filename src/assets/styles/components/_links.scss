@@ -1,12 +1,12 @@
 a {
-  color: var(--color-sec);
+  color: var(--pri-color);
   cursor: pointer;
   text-decoration: none;
   transition: all var(--dur) var(--trans);
 
   &:focus,
   &:hover {
-    color: var(--color-sec-drk);
+    color: var(--pri-color-drk);
     text-decoration: none;
   }
 }

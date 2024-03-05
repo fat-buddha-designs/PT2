@@ -1,0 +1,44 @@
+summary {
+  align-items: center;
+  background-color: var(--color-p-2);
+  border-radius: var(--bor-rad);
+  color: var(--f-color);
+  display: flex;
+  font-size: var(--paragraph);
+  justify-content: space-between;
+  list-style: none;
+  padding: 10px;
+}
+
+summary::after {
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z"/></svg>') center center no-repeat;
+  content: '';
+  cursor: pointer;
+  height: 1em;
+  margin-right: 1ch;
+  transition: .4s;
+  width: 1em;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open]>summary::after {
+  transform: rotate(180deg);
+}
+
+details[open] summary {
+  border-radius: var(--bor-rad) var(--bor-rad) 0 0;
+}
+
+details {
+  background: var(--color-p);
+  border-radius: var(--bor-rad);
+  color: var(--f-color);
+  margin-bottom: 1rem;
+
+  article {
+    padding: 1.2rem 1rem 1rem;
+  }
+}

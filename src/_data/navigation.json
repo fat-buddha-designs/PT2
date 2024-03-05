@@ -31,6 +31,12 @@
       "external": false
     },
     {
+      "text": "FAQs",
+      "url": "/frequently-asked-questions/",
+      "aria": "Hopefully we can answer your questions here.",
+      "external": false
+    },
+    {
       "text": "Contact Us",
       "url": "/contact-us/",
       "aria": "Contact the team at Plant Theatres And More.",
@@ -48,6 +54,12 @@
       "text": "Policies",
       "url": "/policies/",
       "aria": "Plant Theatres And More accessibility, cookies and privacy policy.",
+      "external": false
+    },
+    {
+      "text": "Shipping & Returns",
+      "url": "/shipping-returns/",
+      "aria": "Plant Theatres And More website shipping & returns policy.",
       "external": false
     },
     {
