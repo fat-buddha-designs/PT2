@@ -16,34 +16,37 @@ const Image = require('@11ty/eleventy-img');
 const generateSocialImages = require("@fat-buddha-designs/eleventy-social-images");
 const svgSprite = require("eleventy-plugin-svg-sprite");
 
-// 	--------------- Image Manipulation -----------------
-async function imageShortcode(src, alt, sizes = "100vw") {
+// 	------------- Image Manipulation ----------------
+async function imageShortcode(src, alt, classes, sizes = '100vw', loading) {
   if (alt === undefined) {
     throw new Error(`Missing \`alt\` on responsiveimage from: ${src}`);
   }
 
   let metadata = await Image(src, {
-    widths: [300, 600],
+    widths: [300, 600, 1220, 2440],
     formats: ['webp', 'jpeg'],
-    urlPath: "/assets/images/",
-    outputDir: "./_site/assets/images/"
-  });
+    urlPath: '/assets/images/',
+    outputDir: './_site/assets/images/'
+  });''
 
   let lowsrc = metadata.jpeg[0];
   let highsrc = metadata.jpeg[metadata.jpeg.length - 1];
 
-  return `<picture>
-    ${Object.values(metadata).map(imageFormat => {
-      return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
-    }).join("\n")}
-      <img
-        src="${lowsrc.url}"
-        width="${highsrc.width}"
-        height="${highsrc.height}"
-        alt="${alt}"
-        loading="lazy"
-        decoding="async">
-    </picture>`;
+  return `<picture class="${classes}">
+  ${Object.values(metadata)
+    .map(imageFormat => {
+      return `<source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(', ')}" sizes="${sizes}" loading="${loading}">`;
+    })
+    .join('\n')}
+    <img
+      loading="${loading}"
+      src="${lowsrc.url}"
+      width="${highsrc.width}"
+      height="${highsrc.height}"
+      class="${classes}"
+      alt="${alt}"
+      decoding="async">
+  </picture>`;
 }
 
 module.exports = function (eleventyConfig) {
@@ -135,6 +138,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/site.webmanifest');
   eleventyConfig.addPassthroughCopy('src/android-chrome-192x192.png');
   eleventyConfig.addPassthroughCopy('src/android-chrome-512x512.png');
+  eleventyConfig.addPassthroughCopy('src/maskable-icon.png');
   eleventyConfig.addPassthroughCopy('src/apple-touch-icon.png');
   eleventyConfig.addPassthroughCopy('src/browserconfig.xml');
   eleventyConfig.addPassthroughCopy('src/favicon.ico');

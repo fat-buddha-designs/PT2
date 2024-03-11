@@ -20,7 +20,7 @@
   }
 
   a,
-  a::visited {
+  a:visited {
     text-decoration: underline;
   }
 
@@ -74,17 +74,6 @@
     page-break-after: avoid;
   }
 
-  *,
-  *::before,
-  *::after,
-  *::first-letter,
-  *::first-line {
-    background: transparent !important;
-    box-shadow: none !important;
-    color: #000 !important;
-    text-shadow: none !important;
-  }
-
   ul {
     margin-bottom: 20pt;
     margin-left: 18pt;
@@ -105,11 +94,13 @@
     line-height: 0 !important;
   }
 
-  .copyright,
+  .skip-link,
   .scrollup,
+  .theme--switcher,
   footer,
   header,
-  nav {
+  nav,
+  .banner {
     display: none;
   }
 

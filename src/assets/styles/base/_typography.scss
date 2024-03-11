@@ -5,9 +5,9 @@
   --heading-h2: clamp(28px,calc((32 / (var(--default-screen) / 100)) * 1vw),38px);
   --heading-h3: clamp(24px,calc((28 / (var(--default-screen) / 100)) * 1vw),32px);
   --heading-h4: clamp(20px,calc((24 / (var(--default-screen) / 100)) * 1vw),28px);
-  --heading-h5: clamp(18px,calc((20 / (var(--default-screen) / 100)) * 1vw),24px);
-  --heading-h6: clamp(14px,calc((18 / (var(--default-screen) / 100)) * 1vw),20px);
-  --paragraph: clamp(16px,calc((18 / (var(--default-screen) / 100)) * 1vw),18px);
+  --heading-h5: clamp(20px,calc((22 / (var(--default-screen) / 100)) * 1vw),24px);
+  --heading-h6: clamp(16px,calc((20 / (var(--default-screen) / 100)) * 1vw),20px);
+  --paragraph: clamp(18px,calc((20 / (var(--default-screen) / 100)) * 1vw),20px);
   --small: clamp(12px,calc((12 / (var(--default-screen) / 100)) * 1vw),14px);
 
   --space-default: 1rem;
