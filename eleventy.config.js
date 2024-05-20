@@ -150,6 +150,7 @@ module.exports = function (eleventyConfig) {
 
   // 	--------------------- Base Config -----------------------
   return {
+    pathPrefix: "/",
     templateFormats: ['njk', 'md', 'ico', '11ty.js'],
     htmlTemplateEngine: 'njk',
     markdownTemplateEngine: "njk",

@@ -14,7 +14,9 @@ button {
   text-align: center;
   text-decoration: none;
   text-transform: capitalize;
+  touch-action: manipulation;
   transition: all var(--dur) var(--trans);
+  user-select: none;
 
   &:focus,
   &:hover {
@@ -50,7 +52,9 @@ button {
   text-align: center;
   text-decoration: none;
   text-transform: capitalize;
+  touch-action: manipulation;
   transition: all var(--dur) var(--trans);
+  user-select: none;
 
   &:focus,
   &:hover {
@@ -85,7 +89,9 @@ button {
   padding: var(--p-btn-input-v) var(--p-btn-input-h);
   text-align: center;
   text-decoration: none;
+  touch-action: manipulation;
   transition: all var(--dur) var(--trans);
+  user-select: none;
 
 
   &:focus,

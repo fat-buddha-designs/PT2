@@ -21,7 +21,7 @@
     "@11ty/eleventy-fetch": "^4.0.0",
     "@11ty/eleventy-img": "^3.1.8",
     "@11ty/eleventy-plugin-rss": "^1.2.0"
-  },
+  }, 
   "devDependencies": {
     "@babel/core": "^7.23.6",
     "@babel/plugin-transform-runtime": "^7.23.6",
