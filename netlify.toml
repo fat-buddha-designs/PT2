@@ -33,10 +33,10 @@
 
 [[redirects]]
     from = "*"
-    to = "/404"
+    to = "/404/"
     status = 404
 
-[[plugins|plugins]]
+[[plugins]]
 package = "netlify-plugin-cache"
 
   [plugins.inputs]
@@ -45,7 +45,7 @@ package = "netlify-plugin-cache"
     ".cache"
   ]
 
-[[plugins|plugins]]
+[[plugins]]
   package = "netlify-plugin-inline-critical-css"
 
   [plugins.inputs]
