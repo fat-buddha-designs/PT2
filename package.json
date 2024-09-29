@@ -26,7 +26,7 @@
     "@babel/core": "^7.23.6",
     "@babel/plugin-transform-runtime": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
-    "@fat-buddha-designs/eleventy-social-images": "^0.1.1",
+    "@my-ginger-pussy/eleventy-social-images": "^1.0.1",
     "@notionhq/client": "^2.2.14",
     "@photogabble/eleventy-plugin-word-stats": "^1.0.1",
     "airtable": "^0.12.2",

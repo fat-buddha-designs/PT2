@@ -13,7 +13,7 @@ const wordStats = require('@photogabble/eleventy-plugin-word-stats');
 const markdownIt = require('markdown-it');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const Image = require('@11ty/eleventy-img');
-const generateSocialImages = require("@fat-buddha-designs/eleventy-social-images");
+const generateSocialImages = require("@my-ginger-pussy/eleventy-social-images");
 const svgSprite = require("eleventy-plugin-svg-sprite");
 
 // 	------------- Image Manipulation ----------------
