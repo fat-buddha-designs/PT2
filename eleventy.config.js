@@ -144,6 +144,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/favicon.ico');
   eleventyConfig.addPassthroughCopy('src/icon.svg');
   eleventyConfig.addPassthroughCopy('src/mstile-150x150.png');
+  eleventyConfig.addPassthroughCopy('src/*.txt');
 
   // 	--------------------- Deep-Merge -----------------------
   eleventyConfig.setDataDeepMerge(true);
