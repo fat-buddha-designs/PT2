@@ -73,12 +73,6 @@
       "url": "/terms-of-use/",
       "aria": "Plant Theatres And More terms of use statement.",
       "external": false
-    },
-    {
-      "text": "Feed",
-      "url": "/feed.xml",
-      "aria": "Plant Theatres And More RSS feed.",
-      "external": true
     }
   ]
 }
